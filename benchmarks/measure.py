@@ -193,8 +193,42 @@ def fmt(s, scale=1.0, digits=2):
     return f"{s['median']*scale:.{digits}f} ({s['min']*scale:.{digits}f}–{s['max']*scale:.{digits}f})"
 
 
+RUNTIME_STATES = ('passed', 'failed', 'not built')
+BUILD_MODES = ('cold', 'warm', 'source-change')
+NUMERIC_FIELDS = ('repeat', 'image_bytes', 'gzip_bytes', 'layer_count', 'startup_seconds', 'stop_seconds',
+                  'idle_mem_mib', 'cpu_count')
+
+
+def _num(value):
+    return value if isinstance(value, (int, float)) and not isinstance(value, bool) else None
+
+
+def clean_row(raw):
+    """Rebuild a result row from typed, allowlisted fields so artifact content is never echoed verbatim."""
+    variant = next((v for v in VARIANTS if v == raw.get('variant')), None)
+    if variant is None:
+        raise ValueError('unknown variant in result.json')
+    row = dict(variant=variant,
+               runtime=next((r for r in RUNTIME_STATES if r == raw.get('runtime')), 'error'),
+               builds={})
+    for field in NUMERIC_FIELDS:
+        if _num(raw.get(field)) is not None:
+            row[field] = raw[field]
+    for mode in BUILD_MODES:
+        b = (raw.get('builds') or {}).get(mode)
+        if isinstance(b, dict) and _num(b.get('seconds')) is not None and _num(b.get('exit_code')) is not None:
+            row['builds'][mode] = dict(seconds=b['seconds'], exit_code=int(b['exit_code']))
+    digest = raw.get('packages_sha256')
+    if isinstance(digest, str) and len(digest) == 64 and all(c in '0123456789abcdef' for c in digest):
+        row['packages_sha256'] = digest
+    cves = raw.get('cves')
+    if isinstance(cves, dict) and 'error' not in cves:
+        row['cves'] = {sev: int(cves[sev]) for sev in SEVERITIES if _num(cves.get(sev)) is not None}
+    return row
+
+
 def summary(directory):
-    rows = [json.loads(p.read_text()) for p in sorted(Path(directory).rglob('result.json'))]
+    rows = [clean_row(json.loads(p.read_text())) for p in sorted(Path(directory).rglob('result.json'))]
     found = {r['variant'] for r in rows}
     assert found == set(VARIANTS), f'Expected variants {VARIANTS}, got {sorted(found)}'
     agg = {}
@@ -204,7 +238,7 @@ def summary(directory):
         def build(mode):
             return stat([r['builds'][mode]['seconds'] for r in rs
                          if r['builds'].get(mode, {}).get('exit_code') == 0])
-        cves = next((r['cves'] for r in rs if isinstance(r.get('cves'), dict) and 'error' not in r['cves']), None)
+        cves = next((r['cves'] for r in rs if r.get('cves')), None)
         agg[v] = dict(label=LABELS[v], repeats=len(rs), runtime_passed=len(ok),
                       image_mib=stat([r['image_bytes']/1048576 for r in rs if 'image_bytes' in r]),
                       gzip_mib=stat([r['gzip_bytes']/1048576 for r in rs if 'gzip_bytes' in r]),

@@ -33,7 +33,7 @@ def test_mem_mib():
 def _row(variant, repeat, cold, ok=True):
     builds = {m: dict(seconds=cold / (i + 1), exit_code=0) for i, m in enumerate(('cold', 'warm', 'source-change'))}
     row = dict(variant=variant, repeat=repeat, builds=builds, image_bytes=1048576 * 10, gzip_bytes=1048576 * 4,
-               layer_count=5, packages_sha256='x', runtime='passed' if ok else 'failed',
+               layer_count=5, packages_sha256='a' * 64, runtime='passed' if ok else 'failed',
                startup_seconds=2.0, stop_seconds=0.3, idle_mem_mib=50.0)
     if repeat == 1:
         row['cves'] = dict(CRITICAL=0, HIGH=1, MEDIUM=2, LOW=3, UNKNOWN=0)
