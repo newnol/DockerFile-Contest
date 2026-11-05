@@ -1,0 +1,26 @@
+[
+  {
+    "variant": "top1",
+    "label": "TOP 1 (PYTHON)",
+    "source": "https://devops.vn/webinar/dockerfile-contest-2025/",
+    "sha256": "436ccdd77bd2f9ce312f9044b5a161524f26ff56497fe390cb6ea6f2052c42c7"
+  },
+  {
+    "variant": "top2",
+    "label": "TOP 2 (PYTHON)",
+    "source": "https://devops.vn/webinar/dockerfile-contest-2025/",
+    "sha256": "dcc1eb2ecb5ef0aba200ac64e63528df008d42e6919aae77f2e31da8b924c2c9"
+  },
+  {
+    "variant": "top-entry3",
+    "label": "TOP (PYTHON), third displayed entry; not a confirmed rank 3",
+    "source": "https://devops.vn/webinar/dockerfile-contest-2025/",
+    "sha256": "88fd4d678ae9bcf4ce283523a352b590f527f969e237a5021eda2fcac24357c6"
+  },
+  {
+    "variant": "default",
+    "label": "Repository docker-example.txt",
+    "source": "docker-example.txt",
+    "sha256": "890f4d065737befb4e93bc401ab9e0638de303060fcd0a4ff4c00f594ecd4f5f"
+  }
+]
