@@ -1,0 +1,786 @@
+{
+  "aggregate": {
+    "default": {
+      "label": "Default (docker-example.txt)",
+      "repeats": 5,
+      "runtime_passed": 5,
+      "image_mib": {
+        "n": 5,
+        "median": 200.505,
+        "min": 200.505,
+        "max": 200.505
+      },
+      "gzip_mib": {
+        "n": 5,
+        "median": 87.882,
+        "min": 87.877,
+        "max": 87.886
+      },
+      "layers": {
+        "n": 5,
+        "median": 9,
+        "min": 9,
+        "max": 9
+      },
+      "cold_s": {
+        "n": 5,
+        "median": 12.612,
+        "min": 11.383,
+        "max": 12.679
+      },
+      "warm_s": {
+        "n": 5,
+        "median": 0.823,
+        "min": 0.492,
+        "max": 0.996
+      },
+      "source_change_s": {
+        "n": 5,
+        "median": 9.074,
+        "min": 8.938,
+        "max": 9.517
+      },
+      "startup_s": {
+        "n": 5,
+        "median": 2.822,
+        "min": 2.303,
+        "max": 2.848
+      },
+      "stop_s": {
+        "n": 5,
+        "median": 0.392,
+        "min": 0.377,
+        "max": 0.445
+      },
+      "idle_mem_mib": {
+        "n": 5,
+        "median": 55.29,
+        "min": 54.91,
+        "max": 55.55
+      },
+      "distinct_package_sets": 1,
+      "distinct_image_sizes": 4,
+      "cves": {
+        "CRITICAL": 2,
+        "HIGH": 17,
+        "MEDIUM": 29,
+        "LOW": 22,
+        "UNKNOWN": 0
+      }
+    },
+    "top1": {
+      "label": "TOP 1",
+      "repeats": 5,
+      "runtime_passed": 5,
+      "image_mib": {
+        "n": 5,
+        "median": 101.82,
+        "min": 101.82,
+        "max": 101.82
+      },
+      "gzip_mib": {
+        "n": 5,
+        "median": 32.882,
+        "min": 32.88,
+        "max": 32.885
+      },
+      "layers": {
+        "n": 5,
+        "median": 21,
+        "min": 21,
+        "max": 21
+      },
+      "cold_s": {
+        "n": 5,
+        "median": 9.979,
+        "min": 7.945,
+        "max": 14.27
+      },
+      "warm_s": {
+        "n": 5,
+        "median": 0.393,
+        "min": 0.267,
+        "max": 0.462
+      },
+      "source_change_s": {
+        "n": 5,
+        "median": 0.508,
+        "min": 0.443,
+        "max": 0.663
+      },
+      "startup_s": {
+        "n": 5,
+        "median": 2.261,
+        "min": 2.09,
+        "max": 8.193
+      },
+      "stop_s": {
+        "n": 5,
+        "median": 0.335,
+        "min": 0.286,
+        "max": 0.421
+      },
+      "idle_mem_mib": {
+        "n": 5,
+        "median": 54.48,
+        "min": 54.16,
+        "max": 54.71
+      },
+      "distinct_package_sets": 1,
+      "distinct_image_sizes": 2,
+      "cves": {
+        "CRITICAL": 3,
+        "HIGH": 19,
+        "MEDIUM": 60,
+        "LOW": 50,
+        "UNKNOWN": 3
+      }
+    },
+    "top2": {
+      "label": "TOP 2 - bài của em (FastAPI pin 0.120.4)",
+      "repeats": 5,
+      "runtime_passed": 5,
+      "image_mib": {
+        "n": 5,
+        "median": 65.463,
+        "min": 65.463,
+        "max": 65.463
+      },
+      "gzip_mib": {
+        "n": 5,
+        "median": 22.938,
+        "min": 22.932,
+        "max": 22.939
+      },
+      "layers": {
+        "n": 5,
+        "median": 12,
+        "min": 12,
+        "max": 12
+      },
+      "cold_s": {
+        "n": 5,
+        "median": 23.007,
+        "min": 20.65,
+        "max": 25.258
+      },
+      "warm_s": {
+        "n": 5,
+        "median": 0.571,
+        "min": 0.475,
+        "max": 0.975
+      },
+      "source_change_s": {
+        "n": 5,
+        "median": 0.89,
+        "min": 0.842,
+        "max": 1.878
+      },
+      "startup_s": {
+        "n": 5,
+        "median": 2.842,
+        "min": 2.304,
+        "max": 2.972
+      },
+      "stop_s": {
+        "n": 5,
+        "median": 0.351,
+        "min": 0.337,
+        "max": 0.547
+      },
+      "idle_mem_mib": {
+        "n": 5,
+        "median": 48.28,
+        "min": 48.03,
+        "max": 48.53
+      },
+      "distinct_package_sets": 1,
+      "distinct_image_sizes": 1,
+      "cves": {
+        "CRITICAL": 2,
+        "HIGH": 27,
+        "MEDIUM": 34,
+        "LOW": 52,
+        "UNKNOWN": 2
+      }
+    }
+  },
+  "runs": [
+    {
+      "variant": "default",
+      "repeat": 1,
+      "commit": "88921366f1ca6011f721f001a2105877cedda53f",
+      "platform": "linux/amd64",
+      "runner": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "cpu_count": 4,
+      "builds": {
+        "cold": {
+          "seconds": 12.679,
+          "exit_code": 0,
+          "cached_log_lines": 0
+        },
+        "warm": {
+          "seconds": 0.492,
+          "exit_code": 0,
+          "cached_log_lines": 4
+        },
+        "source-change": {
+          "seconds": 9.03,
+          "exit_code": 0,
+          "cached_log_lines": 1
+        }
+      },
+      "image_id": "sha256:95e5cc424946572e84727d869dcc671c003109cec0a22977449085c9ad717965",
+      "image_bytes": 210245124,
+      "layer_count": 9,
+      "configured_user": "",
+      "base_images": [],
+      "packages_sha256": "1e7b5de566c13704bd799fecaaf2e0de99e0b79d296e9d5ecab6eedf683f2613",
+      "gzip_bytes": 92145822,
+      "cves": {
+        "CRITICAL": 2,
+        "HIGH": 17,
+        "MEDIUM": 29,
+        "LOW": 22,
+        "UNKNOWN": 0
+      },
+      "runtime": "passed",
+      "last_probe_error": "[Errno 104] Connection reset by peer",
+      "startup_seconds": 2.303,
+      "idle_mem_mib": 55.29,
+      "stop_seconds": 0.445
+    },
+    {
+      "variant": "default",
+      "repeat": 2,
+      "commit": "88921366f1ca6011f721f001a2105877cedda53f",
+      "platform": "linux/amd64",
+      "runner": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "cpu_count": 4,
+      "builds": {
+        "cold": {
+          "seconds": 12.007,
+          "exit_code": 0,
+          "cached_log_lines": 0
+        },
+        "warm": {
+          "seconds": 0.779,
+          "exit_code": 0,
+          "cached_log_lines": 4
+        },
+        "source-change": {
+          "seconds": 8.938,
+          "exit_code": 0,
+          "cached_log_lines": 1
+        }
+      },
+      "image_id": "sha256:b570a42b128c29834adc4a740e2c5c7ebc6cc6e3c4760f6e9569bee5d9324936",
+      "image_bytes": 210245136,
+      "layer_count": 9,
+      "configured_user": "",
+      "base_images": [],
+      "packages_sha256": "1e7b5de566c13704bd799fecaaf2e0de99e0b79d296e9d5ecab6eedf683f2613",
+      "gzip_bytes": 92150761,
+      "runtime": "passed",
+      "last_probe_error": "[Errno 104] Connection reset by peer",
+      "startup_seconds": 2.811,
+      "idle_mem_mib": 55.21,
+      "stop_seconds": 0.392
+    },
+    {
+      "variant": "default",
+      "repeat": 3,
+      "commit": "88921366f1ca6011f721f001a2105877cedda53f",
+      "platform": "linux/amd64",
+      "runner": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "cpu_count": 4,
+      "builds": {
+        "cold": {
+          "seconds": 12.612,
+          "exit_code": 0,
+          "cached_log_lines": 0
+        },
+        "warm": {
+          "seconds": 0.996,
+          "exit_code": 0,
+          "cached_log_lines": 4
+        },
+        "source-change": {
+          "seconds": 9.507,
+          "exit_code": 0,
+          "cached_log_lines": 1
+        }
+      },
+      "image_id": "sha256:09bc20ed30685e866a02c0325838cb9f618261372b6a41e6b8a82831186fd161",
+      "image_bytes": 210245130,
+      "layer_count": 9,
+      "configured_user": "",
+      "base_images": [],
+      "packages_sha256": "1e7b5de566c13704bd799fecaaf2e0de99e0b79d296e9d5ecab6eedf683f2613",
+      "gzip_bytes": 92150499,
+      "runtime": "passed",
+      "last_probe_error": "[Errno 104] Connection reset by peer",
+      "startup_seconds": 2.848,
+      "idle_mem_mib": 55.55,
+      "stop_seconds": 0.377
+    },
+    {
+      "variant": "default",
+      "repeat": 4,
+      "commit": "88921366f1ca6011f721f001a2105877cedda53f",
+      "platform": "linux/amd64",
+      "runner": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "cpu_count": 4,
+      "builds": {
+        "cold": {
+          "seconds": 12.678,
+          "exit_code": 0,
+          "cached_log_lines": 0
+        },
+        "warm": {
+          "seconds": 0.823,
+          "exit_code": 0,
+          "cached_log_lines": 4
+        },
+        "source-change": {
+          "seconds": 9.517,
+          "exit_code": 0,
+          "cached_log_lines": 1
+        }
+      },
+      "image_id": "sha256:a1554b6332cc80f606bda475eb8a7e542dc23a967a32c5b457235044f9c7f3b9",
+      "image_bytes": 210245130,
+      "layer_count": 9,
+      "configured_user": "",
+      "base_images": [],
+      "packages_sha256": "1e7b5de566c13704bd799fecaaf2e0de99e0b79d296e9d5ecab6eedf683f2613",
+      "gzip_bytes": 92151090,
+      "runtime": "passed",
+      "last_probe_error": "[Errno 104] Connection reset by peer",
+      "startup_seconds": 2.844,
+      "idle_mem_mib": 55.54,
+      "stop_seconds": 0.378
+    },
+    {
+      "variant": "default",
+      "repeat": 5,
+      "commit": "88921366f1ca6011f721f001a2105877cedda53f",
+      "platform": "linux/amd64",
+      "runner": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "cpu_count": 4,
+      "builds": {
+        "cold": {
+          "seconds": 11.383,
+          "exit_code": 0,
+          "cached_log_lines": 0
+        },
+        "warm": {
+          "seconds": 0.864,
+          "exit_code": 0,
+          "cached_log_lines": 4
+        },
+        "source-change": {
+          "seconds": 9.074,
+          "exit_code": 0,
+          "cached_log_lines": 1
+        }
+      },
+      "image_id": "sha256:67634fa94f4ad938428fa7cccb85633f920e69417485e7b6cf82125809e36e58",
+      "image_bytes": 210244987,
+      "layer_count": 9,
+      "configured_user": "",
+      "base_images": [],
+      "packages_sha256": "1e7b5de566c13704bd799fecaaf2e0de99e0b79d296e9d5ecab6eedf683f2613",
+      "gzip_bytes": 92155051,
+      "runtime": "passed",
+      "last_probe_error": "[Errno 104] Connection reset by peer",
+      "startup_seconds": 2.822,
+      "idle_mem_mib": 54.91,
+      "stop_seconds": 0.4
+    },
+    {
+      "variant": "top1",
+      "repeat": 1,
+      "commit": "88921366f1ca6011f721f001a2105877cedda53f",
+      "platform": "linux/amd64",
+      "runner": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "cpu_count": 4,
+      "builds": {
+        "cold": {
+          "seconds": 9.163,
+          "exit_code": 0,
+          "cached_log_lines": 0
+        },
+        "warm": {
+          "seconds": 0.267,
+          "exit_code": 0,
+          "cached_log_lines": 10
+        },
+        "source-change": {
+          "seconds": 0.454,
+          "exit_code": 0,
+          "cached_log_lines": 9
+        }
+      },
+      "image_id": "sha256:5e97f54d8411ba80f96b28dda300b0e2c47f7b5432d3cfe60e623d57a3c98490",
+      "image_bytes": 106766323,
+      "layer_count": 21,
+      "configured_user": "65532",
+      "base_images": [],
+      "packages_sha256": "4effb27e68f5d30f3417dd8c0ad83548883c72d11e5d1044f9e6c9412c4d247f",
+      "gzip_bytes": 34477352,
+      "cves": {
+        "CRITICAL": 3,
+        "HIGH": 19,
+        "MEDIUM": 60,
+        "LOW": 50,
+        "UNKNOWN": 3
+      },
+      "runtime": "passed",
+      "last_probe_error": "[Errno 104] Connection reset by peer",
+      "startup_seconds": 8.193,
+      "idle_mem_mib": 54.71,
+      "stop_seconds": 0.301
+    },
+    {
+      "variant": "top1",
+      "repeat": 2,
+      "commit": "88921366f1ca6011f721f001a2105877cedda53f",
+      "platform": "linux/amd64",
+      "runner": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "cpu_count": 4,
+      "builds": {
+        "cold": {
+          "seconds": 10.998,
+          "exit_code": 0,
+          "cached_log_lines": 0
+        },
+        "warm": {
+          "seconds": 0.462,
+          "exit_code": 0,
+          "cached_log_lines": 10
+        },
+        "source-change": {
+          "seconds": 0.653,
+          "exit_code": 0,
+          "cached_log_lines": 9
+        }
+      },
+      "image_id": "sha256:6c59d658a1566e2cf1ac25611aa4382f3649f933b3360db26b7d38ef71866e43",
+      "image_bytes": 106766323,
+      "layer_count": 21,
+      "configured_user": "65532",
+      "base_images": [],
+      "packages_sha256": "4effb27e68f5d30f3417dd8c0ad83548883c72d11e5d1044f9e6c9412c4d247f",
+      "gzip_bytes": 34479562,
+      "runtime": "passed",
+      "last_probe_error": "[Errno 104] Connection reset by peer",
+      "startup_seconds": 2.09,
+      "idle_mem_mib": 54.48,
+      "stop_seconds": 0.421
+    },
+    {
+      "variant": "top1",
+      "repeat": 3,
+      "commit": "88921366f1ca6011f721f001a2105877cedda53f",
+      "platform": "linux/amd64",
+      "runner": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "cpu_count": 4,
+      "builds": {
+        "cold": {
+          "seconds": 7.945,
+          "exit_code": 0,
+          "cached_log_lines": 0
+        },
+        "warm": {
+          "seconds": 0.393,
+          "exit_code": 0,
+          "cached_log_lines": 10
+        },
+        "source-change": {
+          "seconds": 0.443,
+          "exit_code": 0,
+          "cached_log_lines": 9
+        }
+      },
+      "image_id": "sha256:7796bcf2c20ab24465d823122fec79b797ad250cc23a95ba15f37848a45b31c4",
+      "image_bytes": 106766327,
+      "layer_count": 21,
+      "configured_user": "65532",
+      "base_images": [],
+      "packages_sha256": "4effb27e68f5d30f3417dd8c0ad83548883c72d11e5d1044f9e6c9412c4d247f",
+      "gzip_bytes": 34482110,
+      "runtime": "passed",
+      "last_probe_error": "[Errno 104] Connection reset by peer",
+      "startup_seconds": 2.261,
+      "idle_mem_mib": 54.36,
+      "stop_seconds": 0.286
+    },
+    {
+      "variant": "top1",
+      "repeat": 4,
+      "commit": "88921366f1ca6011f721f001a2105877cedda53f",
+      "platform": "linux/amd64",
+      "runner": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "cpu_count": 4,
+      "builds": {
+        "cold": {
+          "seconds": 9.979,
+          "exit_code": 0,
+          "cached_log_lines": 0
+        },
+        "warm": {
+          "seconds": 0.292,
+          "exit_code": 0,
+          "cached_log_lines": 10
+        },
+        "source-change": {
+          "seconds": 0.508,
+          "exit_code": 0,
+          "cached_log_lines": 9
+        }
+      },
+      "image_id": "sha256:05e472b33d755bf83d9deef029176b03b0b0aafeb30c64e9f7fd5f9923d0363f",
+      "image_bytes": 106766323,
+      "layer_count": 21,
+      "configured_user": "65532",
+      "base_images": [],
+      "packages_sha256": "4effb27e68f5d30f3417dd8c0ad83548883c72d11e5d1044f9e6c9412c4d247f",
+      "gzip_bytes": 34477018,
+      "runtime": "passed",
+      "last_probe_error": "[Errno 104] Connection reset by peer",
+      "startup_seconds": 2.13,
+      "idle_mem_mib": 54.16,
+      "stop_seconds": 0.335
+    },
+    {
+      "variant": "top1",
+      "repeat": 5,
+      "commit": "88921366f1ca6011f721f001a2105877cedda53f",
+      "platform": "linux/amd64",
+      "runner": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "cpu_count": 4,
+      "builds": {
+        "cold": {
+          "seconds": 14.27,
+          "exit_code": 0,
+          "cached_log_lines": 0
+        },
+        "warm": {
+          "seconds": 0.413,
+          "exit_code": 0,
+          "cached_log_lines": 10
+        },
+        "source-change": {
+          "seconds": 0.663,
+          "exit_code": 0,
+          "cached_log_lines": 9
+        }
+      },
+      "image_id": "sha256:e8403e7c2f32723047991eec61a1d9762912e94586a36effe75b5fd27cc1cbb7",
+      "image_bytes": 106766323,
+      "layer_count": 21,
+      "configured_user": "65532",
+      "base_images": [],
+      "packages_sha256": "4effb27e68f5d30f3417dd8c0ad83548883c72d11e5d1044f9e6c9412c4d247f",
+      "gzip_bytes": 34480810,
+      "runtime": "passed",
+      "last_probe_error": "[Errno 104] Connection reset by peer",
+      "startup_seconds": 2.298,
+      "idle_mem_mib": 54.54,
+      "stop_seconds": 0.356
+    },
+    {
+      "variant": "top2",
+      "repeat": 1,
+      "commit": "88921366f1ca6011f721f001a2105877cedda53f",
+      "platform": "linux/amd64",
+      "runner": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "cpu_count": 4,
+      "builds": {
+        "cold": {
+          "seconds": 21.471,
+          "exit_code": 0,
+          "cached_log_lines": 0
+        },
+        "warm": {
+          "seconds": 0.475,
+          "exit_code": 0,
+          "cached_log_lines": 12
+        },
+        "source-change": {
+          "seconds": 0.842,
+          "exit_code": 0,
+          "cached_log_lines": 8
+        }
+      },
+      "image_id": "sha256:88c636a0dc05f55081b8907a64ee3802128c2cf91288f8180ff2655e91ea1959",
+      "image_bytes": 68642982,
+      "layer_count": 12,
+      "configured_user": "app",
+      "base_images": [],
+      "packages_sha256": "cde2837d272951ebf87f38132c0c72dc264d00eb469fc3005506947fdd334e14",
+      "gzip_bytes": 24052655,
+      "cves": {
+        "CRITICAL": 2,
+        "HIGH": 27,
+        "MEDIUM": 34,
+        "LOW": 52,
+        "UNKNOWN": 2
+      },
+      "runtime": "passed",
+      "last_probe_error": "[Errno 104] Connection reset by peer",
+      "startup_seconds": 2.953,
+      "idle_mem_mib": 48.03,
+      "stop_seconds": 0.351
+    },
+    {
+      "variant": "top2",
+      "repeat": 2,
+      "commit": "88921366f1ca6011f721f001a2105877cedda53f",
+      "platform": "linux/amd64",
+      "runner": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "cpu_count": 4,
+      "builds": {
+        "cold": {
+          "seconds": 23.007,
+          "exit_code": 0,
+          "cached_log_lines": 0
+        },
+        "warm": {
+          "seconds": 0.507,
+          "exit_code": 0,
+          "cached_log_lines": 12
+        },
+        "source-change": {
+          "seconds": 0.89,
+          "exit_code": 0,
+          "cached_log_lines": 8
+        }
+      },
+      "image_id": "sha256:9a412a9a99d125125c745dfe3ddfb76a1a9ece627d1da91dc50b566a7e20c12d",
+      "image_bytes": 68642982,
+      "layer_count": 12,
+      "configured_user": "app",
+      "base_images": [],
+      "packages_sha256": "cde2837d272951ebf87f38132c0c72dc264d00eb469fc3005506947fdd334e14",
+      "gzip_bytes": 24052814,
+      "runtime": "passed",
+      "last_probe_error": "[Errno 104] Connection reset by peer",
+      "startup_seconds": 2.842,
+      "idle_mem_mib": 48.33,
+      "stop_seconds": 0.337
+    },
+    {
+      "variant": "top2",
+      "repeat": 3,
+      "commit": "88921366f1ca6011f721f001a2105877cedda53f",
+      "platform": "linux/amd64",
+      "runner": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "cpu_count": 4,
+      "builds": {
+        "cold": {
+          "seconds": 20.65,
+          "exit_code": 0,
+          "cached_log_lines": 0
+        },
+        "warm": {
+          "seconds": 0.726,
+          "exit_code": 0,
+          "cached_log_lines": 12
+        },
+        "source-change": {
+          "seconds": 0.848,
+          "exit_code": 0,
+          "cached_log_lines": 8
+        }
+      },
+      "image_id": "sha256:b6f9ce930252941948ab2b1b1134dcf4e2921f041f0a26df1b986ac9e0e13c99",
+      "image_bytes": 68642982,
+      "layer_count": 12,
+      "configured_user": "app",
+      "base_images": [],
+      "packages_sha256": "cde2837d272951ebf87f38132c0c72dc264d00eb469fc3005506947fdd334e14",
+      "gzip_bytes": 24052138,
+      "runtime": "passed",
+      "last_probe_error": "[Errno 104] Connection reset by peer",
+      "startup_seconds": 2.304,
+      "idle_mem_mib": 48.53,
+      "stop_seconds": 0.344
+    },
+    {
+      "variant": "top2",
+      "repeat": 4,
+      "commit": "88921366f1ca6011f721f001a2105877cedda53f",
+      "platform": "linux/amd64",
+      "runner": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "cpu_count": 4,
+      "builds": {
+        "cold": {
+          "seconds": 23.338,
+          "exit_code": 0,
+          "cached_log_lines": 0
+        },
+        "warm": {
+          "seconds": 0.975,
+          "exit_code": 0,
+          "cached_log_lines": 12
+        },
+        "source-change": {
+          "seconds": 1.878,
+          "exit_code": 0,
+          "cached_log_lines": 8
+        }
+      },
+      "image_id": "sha256:1a06f518855cee44b383e74530b21ebb007de91f1622d57ee1522b4afca93700",
+      "image_bytes": 68642982,
+      "layer_count": 12,
+      "configured_user": "app",
+      "base_images": [],
+      "packages_sha256": "cde2837d272951ebf87f38132c0c72dc264d00eb469fc3005506947fdd334e14",
+      "gzip_bytes": 24049351,
+      "runtime": "passed",
+      "last_probe_error": "[Errno 104] Connection reset by peer",
+      "startup_seconds": 2.383,
+      "idle_mem_mib": 48.28,
+      "stop_seconds": 0.547
+    },
+    {
+      "variant": "top2",
+      "repeat": 5,
+      "commit": "88921366f1ca6011f721f001a2105877cedda53f",
+      "platform": "linux/amd64",
+      "runner": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+      "cpu_count": 4,
+      "builds": {
+        "cold": {
+          "seconds": 25.258,
+          "exit_code": 0,
+          "cached_log_lines": 0
+        },
+        "warm": {
+          "seconds": 0.571,
+          "exit_code": 0,
+          "cached_log_lines": 12
+        },
+        "source-change": {
+          "seconds": 0.965,
+          "exit_code": 0,
+          "cached_log_lines": 8
+        }
+      },
+      "image_id": "sha256:f6658dd25903397103b15ecceceee6a232472648eee33ecd9a765477b2266e9e",
+      "image_bytes": 68642982,
+      "layer_count": 12,
+      "configured_user": "app",
+      "base_images": [],
+      "packages_sha256": "cde2837d272951ebf87f38132c0c72dc264d00eb469fc3005506947fdd334e14",
+      "gzip_bytes": 24046197,
+      "runtime": "passed",
+      "last_probe_error": "[Errno 104] Connection reset by peer",
+      "startup_seconds": 2.972,
+      "idle_mem_mib": 48.23,
+      "stop_seconds": 0.395
+    }
+  ]
+}

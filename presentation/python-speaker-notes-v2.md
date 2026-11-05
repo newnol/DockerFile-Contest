@@ -144,7 +144,7 @@ Phân bổ thời gian: Mở đầu & CTF (1–4) ≈ 3 phút · Cơ chế (5–
 
 ## Slide 35 — Container đã lên
 
-**Nói:** Startup tính từ `docker run` đến khi `/health/` báo healthy và trang chủ render, poll mỗi 0,5 giây: Default 2,39 giây, TOP 1 2,32 (1,69–2,50), TOP 2 3,08 (2,25–3,38). Do độ phân giải poll 0,5 giây, chênh dưới khoảng nửa giây không có ý nghĩa, và dải của ba recipe chồng lên nhau. Em chỉ nói được TOP 2 có xu hướng chậm hơn, không khẳng định hơn. Thời gian stop khoảng 0,35 giây cho cả ba.
+**Nói:** Startup tính từ `docker run` đến khi `/health/` báo healthy và trang chủ render, poll mỗi 0,5 giây: Default 2,39 giây, TOP 1 2,32 (1,69–2,50), TOP 2 3,08 (2,25–3,38). Do độ phân giải poll 0,5 giây, chênh dưới khoảng nửa giây không có ý nghĩa, và dải của ba recipe chồng lên nhau. Em chạy lại thêm hai lượt 15 job (run 42058703830 và 42059152289): median startup của TOP 2 thành 2,84 rồi 2,24 giây, thứ tự đổi giữa các lượt, nên em không xếp hạng startup. Thời gian stop khoảng 0,35 giây cho cả ba.
 
 ## Slide 36 — RAM khi rỗi
 
