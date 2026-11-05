@@ -32,4 +32,4 @@ Median (min–max) over repeats. Each repeat is an independent GitHub-hosted run
 - Coffee API points to a local stub; this is a packaging smoke test, not a functional or load test.
 
 ## Repeat runs (same recipes, later commits)
-- Run 42058703830 and 42059152289 (`measurement-data/github-42058703830/`, `measurement-data/github-42059152289/`): sizes, gzip, idle RAM, Trivy counts identical; cold/source-change ordering unchanged; startup medians reorder between runs (TOP 2: 3.08 → 2.84 → 2.24 s), so startup is not ranked.
+- Run 42058703830 and 42059152289 (`measurement-data/github-42058703830/`, `measurement-data/github-42059152289/`): image size and Trivy counts identical, gzip and idle RAM within 0.2 MiB; cold/source-change ordering unchanged; startup medians reorder between runs (TOP 2: 3.08 → 2.84 → 2.24 s), so startup is not ranked.
