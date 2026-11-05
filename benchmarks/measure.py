@@ -127,7 +127,8 @@ def summary(directory):
               '- Smoke overrides PORT=5000 and WORKERS=1, 1 CPU/512 MiB. Checks /health/ JSON and homepage; not full functional equivalence or load testing.',
               '- COFFEE_API__HOST points to a controlled local HTTP stub returning 200 and [] for /hot; this isolates packaging from external API availability. Not a live integration test.',
               '- No CVE count claimed: no fresh security scan in this workflow. Labels/comments from original submissions are not verified security evidence.',
-              '- Failed recipes are preserved without dependency or source repairs. See per-variant logs.', '']
+              '- TOP 2 is adapted: FastAPI pinned to 0.120.4 to avoid the observed 0.162.0 incompatibility with instrumentator 7.1.0. Other recipes unchanged. Original run: 41990729849.',
+              '- Runtime failures remain visible in this report even when collection jobs succeed. See per-variant logs.', '']
     text = '\n'.join(lines)
     Path(directory, 'comparison.md').write_text(text)
     Path(directory, 'comparison.json').write_text(json.dumps(rows, indent=2)+'\n')

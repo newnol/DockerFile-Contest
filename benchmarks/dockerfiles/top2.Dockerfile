@@ -27,7 +27,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     python -m pip install --no-cache-dir --prefix=/install \
          "aiohttp>=3.12.14,<4.0.0" \
          "asgi-correlation-id>=4.3.4,<5.0.0" \
-         "fastapi>=0.116.0" \
+         "fastapi==0.120.4" \
          "prometheus-fastapi-instrumentator>=7.0.0,<8.0.0" \
          "pydantic>=2.11.0,<3.0.0" \
          "pydantic-settings>=2.9.1,<3.0.0" \
