@@ -833,7 +833,7 @@ s = new_slide()
 header(s, '06 · Production', 'Lấy gì từ đâu', 0)
 rows = [['Kỹ thuật', 'Lấy từ', 'Vì sao (bằng chứng)'],
         ['Multi-stage, compiler ở builder', 'TOP 1 · TOP 2', 'runtime không có gcc/cargo'],
-        ['Lock trước, source sau', 'TOP 1', f"sửa code: {A['top1']['source_change_s']['median']:.2f} s vs {A['default']['source_change_s']['median']:.2f} s"],
+        ['Lock trước, source sau', 'TOP 1', f"sửa code: {A['top1']['source_change_s']['median'] + 1e-9:.2f} s vs {A['default']['source_change_s']['median']:.2f} s"],
         ['Runtime Alpine + strip .so trong builder', 'TOP 2 · bài em', f"nhỏ nhất: {A['top2']['image_mib']['median']:.1f} MiB"],
         ['Lock có hash · chỉ dùng wheel', 'Mới', 'tái lập được · không cần compiler'],
         ['Cache mount uv dùng được thật', 'Sửa bài em', 'bỏ PIP_NO_CACHE_DIR / --no-cache-dir'],
@@ -843,7 +843,7 @@ rows = [['Kỹ thuật', 'Lấy từ', 'Vì sao (bằng chứng)'],
 tb = table(s, 0.6, 1.7, 12.13, 4.9, rows, col_w=[4.9, 2.3, 4.93], size=15)
 footer(s, 'Thay đổi dependency (lock mới) nằm ngoài luật cuộc thi · đây là khuyến nghị cho production, không phải bài dự thi')
 notes(s, f"""
-Em gộp lại theo bằng chứng. Multi-stage để compiler ở lại builder. Thứ tự lock trước, source sau của TOP 1, vì nó cho {A['top1']['source_change_s']['median']:.2f} giây khi sửa code. Runtime Alpine và strip file .so trong builder của bài em vì nhỏ nhất.
+Em gộp lại theo bằng chứng. Multi-stage để compiler ở lại builder. Thứ tự lock trước, source sau của TOP 1, vì nó cho {A['top1']['source_change_s']['median'] + 1e-9:.2f} giây khi sửa code. Runtime Alpine và strip file .so trong builder của bài em vì nhỏ nhất.
 Thêm hai thứ mới: lock có hash và chỉ cài wheel dựng sẵn – không cần compiler nên build lạnh nhanh hơn – và cache mount hoạt động thật.
 Đồng thời sửa các lỗi của bài em: code thuộc root, không xóa stdlib sau khi COPY, và cập nhật base, dependency. Lưu ý: đổi dependency là ngoài luật cuộc thi, nên đây là khuyến nghị production.""")
 slides.append(s)

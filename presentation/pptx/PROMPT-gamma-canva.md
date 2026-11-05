@@ -58,7 +58,7 @@ DÀN Ý TỪNG SLIDE:
 25. Chuyển phần (navy): "06 · Bản production" – phụ đề "Gộp những gì số liệu đã chứng minh · bỏ những gì không có tác dụng".
 26. Bảng "Lấy gì từ đâu" (3 cột: Kỹ thuật · Lấy từ · Vì sao):
     Multi-stage, compiler ở builder · TOP 1, TOP 2 · runtime không có gcc/cargo
-    Lock trước, source sau · TOP 1 · sửa code 0.47 s vs 9.50 s
+    Lock trước, source sau · TOP 1 · sửa code 0.48 s vs 9.50 s
     Runtime Alpine + strip .so trong builder · TOP 2 bài em · nhỏ nhất 65.5 MiB
     Lock có hash, chỉ dùng wheel · mới · tái lập, không cần compiler
     Cache mount uv dùng được thật · sửa bài em · bỏ PIP_NO_CACHE_DIR / --no-cache-dir
