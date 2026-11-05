@@ -3,6 +3,7 @@
 #  - multi-stage, build tools never reach runtime        (TOP 1, TOP 2)
 #  - manifest/lock before source -> cache survives edits  (TOP 1)
 #  - Alpine runtime for size                              (TOP 2)
+#  - strip shared libraries inside the builder           (TOP 2)
 #  - hashed lock + wheels only -> reproducible, no compiler (new)
 #  - working uv cache mount, files owned by root, non-root user (new)
 
@@ -15,12 +16,14 @@ COPY --from=uv /uv /usr/local/bin/uv
 ENV UV_LINK_MODE=copy \
     UV_COMPILE_BYTECODE=1 \
     UV_PYTHON_DOWNLOADS=never
-RUN uv venv /opt/venv
+RUN apk add --no-cache binutils \
+ && uv venv /opt/venv
 # Lock is the only input of this step, so editing src/ never re-runs it.
 COPY benchmarks/prod/requirements.txt /tmp/requirements.txt
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv pip install --python /opt/venv/bin/python \
-        --require-hashes --no-build -r /tmp/requirements.txt
+        --require-hashes --no-build -r /tmp/requirements.txt \
+ && find /opt/venv -name '*.so' -exec strip --strip-unneeded {} +
 
 FROM ${PYTHON_IMAGE} AS runtime
 LABEL org.opencontainers.image.title="python-service-template" \
