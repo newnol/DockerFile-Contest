@@ -205,22 +205,23 @@ def _num(value):
 
 def clean_row(raw):
     """Rebuild a result row from typed, allowlisted fields so artifact content is never echoed verbatim."""
-    variant = next((v for v in VARIANTS if v == raw.get('variant')), None)
-    if variant is None:
+    if raw.get('variant') not in VARIANTS:
         raise ValueError('unknown variant in result.json')
-    row = dict(variant=variant,
-               runtime=next((r for r in RUNTIME_STATES if r == raw.get('runtime')), 'error'),
+    runtime = raw.get('runtime')
+    row = dict(variant=VARIANTS[VARIANTS.index(raw['variant'])],
+               runtime=RUNTIME_STATES[RUNTIME_STATES.index(runtime)] if runtime in RUNTIME_STATES else 'error',
                builds={})
     for field in NUMERIC_FIELDS:
-        if _num(raw.get(field)) is not None:
-            row[field] = raw[field]
+        value = _num(raw.get(field))
+        if value is not None:
+            row[field] = int(value) if isinstance(value, int) else float(value)
     for mode in BUILD_MODES:
         b = (raw.get('builds') or {}).get(mode)
         if isinstance(b, dict) and _num(b.get('seconds')) is not None and _num(b.get('exit_code')) is not None:
-            row['builds'][mode] = dict(seconds=b['seconds'], exit_code=int(b['exit_code']))
+            row['builds'][mode] = dict(seconds=float(b['seconds']), exit_code=int(b['exit_code']))
     digest = raw.get('packages_sha256')
     if isinstance(digest, str) and len(digest) == 64 and all(c in '0123456789abcdef' for c in digest):
-        row['packages_sha256'] = digest
+        row['packages_sha256'] = bytes.fromhex(digest).hex()
     cves = raw.get('cves')
     if isinstance(cves, dict) and 'error' not in cves:
         row['cves'] = {sev: int(cves[sev]) for sev in SEVERITIES if _num(cves.get(sev)) is not None}
