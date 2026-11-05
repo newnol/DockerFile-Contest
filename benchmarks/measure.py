@@ -8,6 +8,18 @@ import sys
 import time
 import urllib.request
 from typing import Any
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from threading import Thread
+
+
+class CoffeeStub(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200 if self.path == '/hot' else 404)
+        self.end_headers()
+        self.wfile.write(b'[]')
+
+    def log_message(self, format, *args):
+        pass
 
 
 def run(args, **kwargs):
@@ -23,6 +35,8 @@ def measure(variant):
                   runner=platform.platform(), cpu_count=os.cpu_count(), builds={})
     base = ['docker', 'buildx', 'build', '--platform', 'linux/amd64', '--load',
             '--progress=plain', '-f', dockerfile, '-t', image]
+    stub = ThreadingHTTPServer(('0.0.0.0', 8765), CoffeeStub)
+    Thread(target=stub.serve_forever, daemon=True).start()
     try:
         for mode in ('cold', 'warm', 'source-change'):
             if mode == 'source-change':
@@ -48,6 +62,8 @@ def measure(variant):
         (out / 'packages.json').write_text(packages.stdout)
         start = time.monotonic()
         p = run(['docker', 'run', '-d', '--name', 'benchmark-app', '--cpus=1', '--memory=512m',
+                 '--add-host', 'host.docker.internal:host-gateway',
+                 '-e', 'COFFEE_API__HOST=http://host.docker.internal:8765',
                  '-e', 'PORT=5000', '-e', 'WORKERS=1', '-p', '127.0.0.1:5000:5000', image])
         (out / 'container-start.txt').write_text(p.stdout)
         result['runtime'] = 'failed'
@@ -61,7 +77,8 @@ def measure(variant):
                         assert 'Dockerfile Contest 2025' in response.read().decode()
                     result.update(runtime='passed', startup_seconds=round(time.monotonic()-start, 3))
                     break
-                except Exception:
+                except Exception as exc:
+                    result['last_probe_error'] = str(exc)
                     state = run(['docker', 'inspect', '--format', '{{.State.Running}}', 'benchmark-app'])
                     if state.stdout.strip() != 'true':
                         break
@@ -76,6 +93,8 @@ def measure(variant):
     except Exception as exc:
         result['error'] = str(exc)
     finally:
+        stub.shutdown()
+        stub.server_close()
         run(['docker', 'rm', '-f', 'benchmark-app'])
         (out / 'result.json').write_text(json.dumps(result, indent=2)+'\n')
 
@@ -106,6 +125,7 @@ def summary(directory):
               '- Image MiB is Docker inspect local uncompressed size, NOT registry download size. Inspect/history/packages and logs are retained as artifacts.',
               '- Dockerfiles intentionally resolve different dependencies and bases. This compares whole recipes, not an isolated optimization. Mutable tags/dependency ranges may change on rerun.',
               '- Smoke overrides PORT=5000 and WORKERS=1, 1 CPU/512 MiB. Checks /health/ JSON and homepage; not full functional equivalence or load testing.',
+              '- COFFEE_API__HOST points to a controlled local HTTP stub returning 200 and [] for /hot; this isolates packaging from external API availability. Not a live integration test.',
               '- No CVE count claimed: no fresh security scan in this workflow. Labels/comments from original submissions are not verified security evidence.',
               '- Failed recipes are preserved without dependency or source repairs. See per-variant logs.', '']
     text = '\n'.join(lines)

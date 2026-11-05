@@ -7,10 +7,21 @@ from pathlib import Path
 import sys
 
 sys.path.insert(0, str(Path(__file__).parent))
-from measure import summary
+from measure import summary, CoffeeStub
+from http.server import ThreadingHTTPServer
+from threading import Thread
+from urllib.request import urlopen
 
 
 def test_summary():
+    server = ThreadingHTTPServer(('127.0.0.1', 0), CoffeeStub)
+    Thread(target=server.serve_forever, daemon=True).start()
+    try:
+        with urlopen(f'http://127.0.0.1:{server.server_port}/hot') as response:
+            assert response.status == 200 and json.load(response) == []
+    finally:
+        server.shutdown()
+        server.server_close()
     with tempfile.TemporaryDirectory() as tmp:
         for variant in ('default', 'top1', 'top2', 'top-entry3'):
             p = Path(tmp, variant)
