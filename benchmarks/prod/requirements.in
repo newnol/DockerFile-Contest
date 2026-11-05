@@ -1,0 +1,10 @@
+# Runtime dependencies of src/ only (no fastapi[standard] extras, no dev tools).
+aiohttp
+asgi-correlation-id
+fastapi
+prometheus-fastapi-instrumentator
+pydantic
+pydantic-settings
+structlog
+uvicorn
+uvloop

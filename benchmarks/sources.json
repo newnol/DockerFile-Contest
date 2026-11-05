@@ -17,5 +17,11 @@
     "label": "Repository docker-example.txt",
     "source": "docker-example.txt",
     "sha256": "890f4d065737befb4e93bc401ab9e0638de303060fcd0a4ff4c00f594ecd4f5f"
+  },
+  {
+    "variant": "prod",
+    "label": "Production - combined recipe (this repository)",
+    "source": "benchmarks/dockerfiles/prod.Dockerfile",
+    "lock": "benchmarks/prod/requirements.txt"
   }
 ]

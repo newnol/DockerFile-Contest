@@ -174,9 +174,10 @@ def trivy(image, trivy_image, out):
 
 
 SEVERITIES = ('CRITICAL', 'HIGH', 'MEDIUM', 'LOW', 'UNKNOWN')
-VARIANTS = ('default', 'top1', 'top2')
+VARIANTS = ('default', 'top1', 'top2', 'prod')
 LABELS = {'default': 'Default (docker-example.txt)', 'top1': 'TOP 1',
-          'top2': 'TOP 2 - bài của em (FastAPI pin 0.120.4)'}
+          'top2': 'TOP 2 - bài của em (FastAPI pin 0.120.4)',
+          'prod': 'Production (gộp lợi thế, lock mới)'}
 
 
 def stat(values):
@@ -274,6 +275,7 @@ def summary(directory):
               '- Startup = docker run until /health/ is HEALTHY and homepage renders, polled every 0.5 s. Idle RAM sampled 5 s after startup.',
               '- Whole recipes are compared: bases and dependency versions differ, so no single technique is isolated.',
               '- TOP 2 is adapted by one line (fastapi==0.120.4) because unpinned FastAPI 0.162 breaks the instrumentator; original failure: run 41990729849.',
+              '- Production recipe uses its own hashed lock (benchmarks/prod/requirements.txt) with current dependency versions, so its CVE counts reflect newer dependencies as well as Dockerfile technique.',
               '- Coffee API points to a local stub; this is a packaging smoke test, not a functional or load test.', '']
     text = '\n'.join(lines)
     Path(directory, 'comparison.md').write_text(text)
