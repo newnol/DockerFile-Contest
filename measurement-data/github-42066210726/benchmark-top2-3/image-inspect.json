@@ -1,0 +1,101 @@
+{
+  "Id": "sha256:a4170bb927034f8df116b990d715f3dd0835e7419a36849821c0546d215c661c",
+  "RepoTags": [
+    "contest-benchmark:top2"
+  ],
+  "RepoDigests": [],
+  "Parent": "",
+  "Comment": "buildkit.dockerfile.v0",
+  "Created": "2026-11-05T16:37:17.704045184Z",
+  "DockerVersion": "",
+  "Author": "",
+  "Config": {
+    "Hostname": "",
+    "Domainname": "",
+    "User": "app",
+    "AttachStdin": false,
+    "AttachStdout": false,
+    "AttachStderr": false,
+    "ExposedPorts": {
+      "5000/tcp": {}
+    },
+    "Tty": false,
+    "OpenStdin": false,
+    "StdinOnce": false,
+    "Env": [
+      "PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+      "PYTHON_VERSION=3.13.9",
+      "PYTHON_SHA256=ed5ef34cda36cfa2f3a340f07cac7e7814f91c7f3c411f6d3562323a866c5c66",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "PYTHONUNBUFFERED=1",
+      "PIP_NO_CACHE_DIR=1",
+      "HOST=0.0.0.0",
+      "PORT=5000",
+      "WORKERS=1",
+      "PYTHONPATH=/app/src",
+      "TZ=UTC"
+    ],
+    "Cmd": [
+      "python",
+      "src/python_service_template/app.py"
+    ],
+    "Healthcheck": {
+      "Test": [
+        "CMD-SHELL",
+        "wget --no-verbose --tries=1 -O /dev/null http://127.0.0.1:${PORT}/health/ || exit 1"
+      ],
+      "Interval": 15000000000,
+      "Timeout": 3000000000,
+      "StartPeriod": 10000000000,
+      "Retries": 2
+    },
+    "ArgsEscaped": true,
+    "Image": "",
+    "Volumes": null,
+    "WorkingDir": "/app",
+    "Entrypoint": null,
+    "OnBuild": null,
+    "Labels": {
+      "maintainer": "newnol",
+      "org.opencontainers.image.authors": "newnol <contact@newnol.io.vn>",
+      "org.opencontainers.image.description": "Production-ready FastAPI service - Optimized & Secured",
+      "org.opencontainers.image.title": "Python Service Template",
+      "org.opencontainers.image.version": "0.1.0",
+      "security.scan": "trivy-passed"
+    },
+    "StopSignal": "SIGTERM"
+  },
+  "Architecture": "amd64",
+  "Os": "linux",
+  "Size": 68642982,
+  "GraphDriver": {
+    "Data": {
+      "LowerDir": "/var/lib/docker/overlay2/b9a379a56b9c0e1b41b43f883d947e2de233c5ecdda6b2dcfc252226881cab79/diff:/var/lib/docker/overlay2/74bf6dd963a414b349e3076a02ebf15aa148a71370bfc2a944a483787f866c05/diff:/var/lib/docker/overlay2/1cd524afd4c9a65a15fe46b7b0849ff35ecaa73913eea8decf62ccfdb3a2399c/diff:/var/lib/docker/overlay2/3e86aa4e7bf389893995aab25983fa26b6a27195d27be263ee722daa2519076b/diff:/var/lib/docker/overlay2/367f6d413a4a325e8d9b7ed38f72bd849532596e2f9498d1e7026c17655b06d7/diff:/var/lib/docker/overlay2/bb1d959cd3e93fea07fbd8aa29c41bfb99d234769a6381e70ee7ec09ed0d7af2/diff:/var/lib/docker/overlay2/03511156cbce8df5f8f95f98b135e86d9cba243917b94a8f8a15b01698165346/diff:/var/lib/docker/overlay2/1e0578db6b974fe270391c5a363ef56d58cd3f3e656294213e0466c0ef371f22/diff:/var/lib/docker/overlay2/b0aea1eca3b0aead91b563a664b7f4756046df9cb2046de8eb5d98c4a63f5008/diff:/var/lib/docker/overlay2/e28fc4ce2d3bd1b851b91a3fb854f80b795b8bf5b279c3bb6a3d5595091feb80/diff:/var/lib/docker/overlay2/f8ed2dc2a9ef3542e6ddf8e1799ebef5ffc8eec549d5e5a280891692a99a5a74/diff",
+      "MergedDir": "/var/lib/docker/overlay2/a1a871420a7e01dc99c959bcfd3b15da7398f427d1443e1bdafc4640633d7801/merged",
+      "UpperDir": "/var/lib/docker/overlay2/a1a871420a7e01dc99c959bcfd3b15da7398f427d1443e1bdafc4640633d7801/diff",
+      "WorkDir": "/var/lib/docker/overlay2/a1a871420a7e01dc99c959bcfd3b15da7398f427d1443e1bdafc4640633d7801/work"
+    },
+    "Name": "overlay2"
+  },
+  "RootFS": {
+    "Type": "layers",
+    "Layers": [
+      "sha256:256f393e029fa2063d8c93720da36a74a032bed3355a2bc3e313ad12f8bde9d1",
+      "sha256:cbad91b8195976d70e670836fc28273c9eb3c8f8c29937b8b8f36c8ad83fa029",
+      "sha256:9dc71bb16e75b960d26d145554a34d11685402b5c8eaee64139c6bc83b27bfa3",
+      "sha256:70ef2a44229f1cb842062e65454d1480ae6d26ec83b8a60fb877f1b297a735f7",
+      "sha256:ab68458d74e186c4c7187d609b5dc2610e77f3b6024b1fa6ca5f698cbfe7a990",
+      "sha256:752108e6497eae8fe1c15c4227539943d646133129a2c96a22ea2090ddc1114a",
+      "sha256:7992cde20b4a493d1e2a52ebbb646ffcb0f885bd7233fd20fadbca2a5a3998ff",
+      "sha256:f0a1099d376c995de6b9fb00fabdc9ce694d4fce8a313a6b876535d965d99f64",
+      "sha256:3409f701f8573dc9bc5b71f857d3f5c490f90b94d08c2b5f53ea8210355a2e65",
+      "sha256:88a0de68d7e02f2947d5f3a33fef3ae91e230a44e1f9e477eda2936c446765c5",
+      "sha256:5fe22e67e939202d9edef040374e7963c95ea6e40be31f7839797cce8eab386b",
+      "sha256:535effe570b5c322fd569507e8c100da704097c6a59adabdd0e3c40a2ecac3a4"
+    ]
+  },
+  "Metadata": {
+    "LastTagTime": "0001-01-01T00:00:00Z"
+  }
+}
