@@ -22,11 +22,40 @@ class CoffeeStub(BaseHTTPRequestHandler):
         self.wfile.write(b'[]')
 
     def log_message(self, format, *args):
-        pass
+        """Silence per-request logging; the stub is only a fixture."""
 
 
 def run(args, **kwargs):
     return subprocess.run(args, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, **kwargs)
+
+
+class ProbeError(Exception):
+    """The container answered, but not with the expected content."""
+
+
+def probe():
+    with urllib.request.urlopen('http://127.0.0.1:5000/health/', timeout=1) as response:
+        body = json.load(response)
+        if body.get('heartbeat') != 'HEALTHY':
+            raise ProbeError(f'unhealthy: {body}')
+    with urllib.request.urlopen('http://127.0.0.1:5000/', timeout=1) as response:
+        if 'Dockerfile Contest 2025' not in response.read().decode():
+            raise ProbeError('homepage marker missing')
+
+
+def wait_ready(result, start):
+    """Poll every 0.5 s until health + homepage pass or the container exits."""
+    for _ in range(120):
+        try:
+            probe()
+            result.update(runtime='passed', startup_seconds=round(time.monotonic()-start, 3))
+            return
+        except (OSError, ValueError, ProbeError) as exc:
+            result['last_probe_error'] = str(exc)
+        state = run(['docker', 'inspect', '--format', '{{.State.Running}}', 'benchmark-app'])
+        if state.stdout.strip() != 'true':
+            return
+        time.sleep(0.5)
 
 
 def measure(variant):
@@ -76,21 +105,7 @@ def measure(variant):
         (out / 'container-start.txt').write_text(p.stdout)
         result['runtime'] = 'failed'
         if p.returncode == 0:
-            for _ in range(120):
-                try:
-                    with urllib.request.urlopen('http://127.0.0.1:5000/health/', timeout=1) as response:
-                        body = json.load(response)
-                        assert body.get('heartbeat') == 'HEALTHY', body
-                    with urllib.request.urlopen('http://127.0.0.1:5000/', timeout=1) as response:
-                        assert 'Dockerfile Contest 2025' in response.read().decode()
-                    result.update(runtime='passed', startup_seconds=round(time.monotonic()-start, 3))
-                    break
-                except Exception as exc:
-                    result['last_probe_error'] = str(exc)
-                    state = run(['docker', 'inspect', '--format', '{{.State.Running}}', 'benchmark-app'])
-                    if state.stdout.strip() != 'true':
-                        break
-                    time.sleep(0.5)
+            wait_ready(result, start)
             (out / 'container-inspect.json').write_text(run(['docker', 'inspect', 'benchmark-app']).stdout)
             (out / 'container.log').write_text(run(['docker', 'logs', 'benchmark-app']).stdout)
             if result['runtime'] == 'passed':
@@ -139,7 +154,7 @@ class _Counter:
         self.n += len(b)
 
     def flush(self):
-        pass
+        """Nothing is buffered; only the byte count is kept."""
 
 
 def trivy(image, trivy_image, out):
@@ -233,8 +248,16 @@ def summary(directory):
     print(text)
 
 
+SUMMARY_DIR = 'collected'
+
 if __name__ == '__main__':
+    # Map CLI input onto known constants so no argument reaches paths or commands verbatim.
     if sys.argv[1] == 'summary':
-        summary(sys.argv[2])
+        if sys.argv[2:] not in ([], [SUMMARY_DIR]):
+            raise SystemExit(f'summary only reads ./{SUMMARY_DIR}')
+        summary(SUMMARY_DIR)
     else:
-        measure(sys.argv[1])
+        known = {v: v for v in VARIANTS}
+        if sys.argv[1] not in known:
+            raise SystemExit(f'unknown variant {sys.argv[1]!r}; expected one of {VARIANTS}')
+        measure(known[sys.argv[1]])
