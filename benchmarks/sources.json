@@ -7,16 +7,10 @@
   },
   {
     "variant": "top2",
-    "label": "TOP 2 (PYTHON), adapted: FastAPI pinned to 0.120.4",
+    "label": "TOP 2 (PYTHON) - newnol submission, adapted: FastAPI pinned to 0.120.4",
     "source": "https://devops.vn/webinar/dockerfile-contest-2025/",
     "original_sha256": "dcc1eb2ecb5ef0aba200ac64e63528df008d42e6919aae77f2e31da8b924c2c9",
     "sha256": "fe3372eb07aa8e4d48c5264f1c8c72382e0d1e284cd689fb1d553445825e0416"
-  },
-  {
-    "variant": "top-entry3",
-    "label": "TOP (PYTHON), third displayed entry; not a confirmed rank 3",
-    "source": "https://devops.vn/webinar/dockerfile-contest-2025/",
-    "sha256": "88fd4d678ae9bcf4ce283523a352b590f527f969e237a5021eda2fcac24357c6"
   },
   {
     "variant": "default",
