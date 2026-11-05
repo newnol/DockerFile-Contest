@@ -8,7 +8,7 @@
 # -----------------------------------------------------------------------------
 # Stage 1: Dependencies Builder
 # -----------------------------------------------------------------------------
-    FROM python:3.13-alpine@sha256:e5fa639e49b85986c4481e28faa2564b45aa8021413f31026c3856e5911618b1 AS deps
+    FROM python:3.13-alpine AS deps
 
     ENV PIP_NO_CACHE_DIR=1 \
         PIP_DISABLE_PIP_VERSION_CHECK=1 \
@@ -54,7 +54,7 @@
     # -----------------------------------------------------------------------------
     # Stage 2: Runtime (ULTRA MINIMAL + SECURE)
     # -----------------------------------------------------------------------------
-    FROM python:3.13-alpine@sha256:e5fa639e49b85986c4481e28faa2564b45aa8021413f31026c3856e5911618b1 AS runtime
+    FROM python:3.13-alpine AS runtime
     
     LABEL org.opencontainers.image.title="Python Service Template" \
           org.opencontainers.image.description="Production-ready FastAPI service - Optimized & Secured" \
