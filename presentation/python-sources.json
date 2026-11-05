@@ -1,7 +1,7 @@
 {
-  "run": "https://github.com/newnol/DockerFile-Contest/actions/runs/41992840188",
-  "commit": "35be0461710f3f907d1c6e1fd54de68d1f915ea8",
-  "comparison": "measurement-data/github-41992840188/comparison/comparison.json",
+  "run": "https://github.com/newnol/DockerFile-Contest/actions/runs/42057474702",
+  "commit": "9b49c077fcc942a48ed2a7b0da79ddf33256ea1b",
+  "comparison": "measurement-data/github-42057474702/comparison/comparison.json",
   "recipe_sources": [
     {
       "variant": "top1",
@@ -11,16 +11,10 @@
     },
     {
       "variant": "top2",
-      "label": "TOP 2 (PYTHON), adapted: FastAPI pinned to 0.120.4",
+      "label": "TOP 2 (PYTHON) - newnol submission, adapted: FastAPI pinned to 0.120.4",
       "source": "https://devops.vn/webinar/dockerfile-contest-2025/",
       "original_sha256": "dcc1eb2ecb5ef0aba200ac64e63528df008d42e6919aae77f2e31da8b924c2c9",
       "sha256": "fe3372eb07aa8e4d48c5264f1c8c72382e0d1e284cd689fb1d553445825e0416"
-    },
-    {
-      "variant": "top-entry3",
-      "label": "TOP (PYTHON), third displayed entry; not a confirmed rank 3",
-      "source": "https://devops.vn/webinar/dockerfile-contest-2025/",
-      "sha256": "88fd4d678ae9bcf4ce283523a352b590f527f969e237a5021eda2fcac24357c6"
     },
     {
       "variant": "default",
@@ -69,5 +63,9 @@
     "four_blocks_per_slide": true,
     "hashes_match": true
   },
-  "docx_status": "not generated: python-docx unavailable in active Python and /usr/bin/python3; no installation requested"
+  "docx_status": "not generated: python-docx unavailable in active Python and /usr/bin/python3; no installation requested",
+  "previous_runs": {
+    "41990729849": "original TOP 2 runtime failure (FastAPI 0.162)",
+    "41992840188": "single-sample 4-recipe run used by the earlier 40-slide deck"
+  }
 }

@@ -16,7 +16,7 @@ env:
 
 jobs:
   benchmark:
-    name: Measure ${{ matrix.variant }} #${{ matrix.repeat }}
+    name: "Measure ${{ matrix.variant }} · run ${{ matrix.repeat }}"
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     strategy:

@@ -92,12 +92,12 @@
     {
       "source": "presentation/python-diagrams/29-ci-runners.d2",
       "svg": "presentation/python-diagrams/29-ci-runners.svg",
-      "sha256": "ca4ae3b9c7c48f7aa3a873e3131da233a0514259ae5c145acfc6212a3bac5936"
+      "sha256": "614b94e7ba117488ebbf7d11ae8ffd3b80d0e21fce4cac19b768e8aef1eb2980"
     },
     {
       "source": "presentation/python-diagrams/30-ci-evidence.d2",
       "svg": "presentation/python-diagrams/30-ci-evidence.svg",
-      "sha256": "b215fbaae6a617bae9b3322462823e262a65b660b455f3bf30b2ffad4a64fe75"
+      "sha256": "b0c2296cc196dcfe7180333ded45b5877c4df2633931e5712c70855411ad1da0"
     },
     {
       "source": "presentation/python-diagrams/36-request-check.d2",

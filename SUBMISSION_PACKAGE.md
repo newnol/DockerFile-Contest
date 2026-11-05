@@ -1,3 +1,5 @@
+> ⚠️ Tài liệu nộp bài 11/2025 (lịch sử). Số liệu ở đây đo trên macOS arm64 tại thời điểm nộp và chưa kiểm chứng lại. Số đo hiện hành: `measurement-data/github-42057474702/comparison/comparison.md` (amd64, 5 lần/recipe; Trivy 05/11/2026 tìm thấy CVE).
+
 # 📦 DOCKERFILE CONTEST 2025 - SUBMISSION PACKAGE
 
 > **Thí sinh:** newnol  

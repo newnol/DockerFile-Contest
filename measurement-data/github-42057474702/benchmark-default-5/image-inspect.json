@@ -1,0 +1,85 @@
+{
+  "Id": "sha256:9d7d11aa5798a4c346bd3c1aa518e7c8a009e0310ccb446bbe4c5a92d3f1dacc",
+  "RepoTags": [
+    "contest-benchmark:default"
+  ],
+  "RepoDigests": [],
+  "Parent": "",
+  "Comment": "buildkit.dockerfile.v0",
+  "Created": "2026-11-05T15:41:38.164966026Z",
+  "DockerVersion": "",
+  "Author": "",
+  "Config": {
+    "Hostname": "",
+    "Domainname": "",
+    "User": "",
+    "AttachStdin": false,
+    "AttachStdout": false,
+    "AttachStderr": false,
+    "ExposedPorts": {
+      "5000/tcp": {}
+    },
+    "Tty": false,
+    "OpenStdin": false,
+    "StdinOnce": false,
+    "Env": [
+      "PATH=/app/.venv/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "LANG=C.UTF-8",
+      "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+      "PYTHON_VERSION=3.13.18",
+      "PYTHON_SHA256=abb0102e6d4ae027509bcb82327d9dd85515b44a3ba8ad538cfc5e9847029f68",
+      "UV_TOOL_BIN_DIR=/usr/local/bin",
+      "PYTHONUNBUFFERED=1",
+      "PORT=5000"
+    ],
+    "Cmd": [
+      "python",
+      "src/python_service_template/app.py"
+    ],
+    "ArgsEscaped": true,
+    "Image": "",
+    "Volumes": null,
+    "WorkingDir": "/app",
+    "Entrypoint": null,
+    "OnBuild": null,
+    "Labels": {
+      "org.opencontainers.image.created": "2026-11-03T02:24:04.410Z",
+      "org.opencontainers.image.description": "An extremely fast Python package and project manager, written in Rust.",
+      "org.opencontainers.image.licenses": "Apache-2.0",
+      "org.opencontainers.image.revision": "316c827e058c16b71d5c507a20729c2995a7bcce",
+      "org.opencontainers.image.source": "https://github.com/astral-sh/uv",
+      "org.opencontainers.image.title": "uv",
+      "org.opencontainers.image.url": "https://github.com/astral-sh/uv",
+      "org.opencontainers.image.version": "0.13.7-python3.13-alpine3.23"
+    }
+  },
+  "Architecture": "amd64",
+  "Os": "linux",
+  "Size": 210245129,
+  "GraphDriver": {
+    "Data": {
+      "LowerDir": "/var/lib/docker/overlay2/888b6f771a9b1394769e55a4177413ae9662105b67b77de152834dd5f79ca93e/diff:/var/lib/docker/overlay2/e576d7dcf06765308675a9c3defd926b0aa4db11c0bb67d55537361d7bc49c43/diff:/var/lib/docker/overlay2/da027f1a59ee5f6bf70572b2ad168f90a99e8bfd93aab7c9a919922b1dc676b1/diff:/var/lib/docker/overlay2/441829a057f0f74e94da5e47da5e3834f7cf5c9858ac0058b468d967b915377b/diff:/var/lib/docker/overlay2/3f365572651a22f99dde208330f323a3184fc5b053c67cb03620497c2d777d2b/diff:/var/lib/docker/overlay2/0d8d019c87c5c5a4d103c7e28ea2e2ae83ace52f1d3016ef43a04e3798867059/diff:/var/lib/docker/overlay2/7714c2e79ae4c6b4f834940f27fb09305e442ed71d638cdd44fe85586705e237/diff:/var/lib/docker/overlay2/0a8b17c1c215c9231973fdd4a2a63d50199ee76e3b39f3ebedb796b643be54bf/diff",
+      "MergedDir": "/var/lib/docker/overlay2/aec2406e271e9fb46b14cf04ff70d423fa3291661c89830fafa2dd01a7b42fed/merged",
+      "UpperDir": "/var/lib/docker/overlay2/aec2406e271e9fb46b14cf04ff70d423fa3291661c89830fafa2dd01a7b42fed/diff",
+      "WorkDir": "/var/lib/docker/overlay2/aec2406e271e9fb46b14cf04ff70d423fa3291661c89830fafa2dd01a7b42fed/work"
+    },
+    "Name": "overlay2"
+  },
+  "RootFS": {
+    "Type": "layers",
+    "Layers": [
+      "sha256:54ea9baa1bbd7651dbda5c61569dad60fa601c73e5b784e154e8ba0f314e84fd",
+      "sha256:db4ac9c12d58ee1ddde75c3668f15119e16ef731108f2cb5b496a5e839d1e6d9",
+      "sha256:7b8e2763b50ff3e156d097b1f3ca41a2f702bb161d1c1be6b64b566fc13e8e3b",
+      "sha256:056661cf139be0b0b120943c26242a13d131605c396b7f3e7fc7cb2aec524380",
+      "sha256:d3eb270b6bd88aa55e43f444a8754654bfce6467954b01ecad70883fa658501b",
+      "sha256:96e84e03d4d11f531a863f48dfbc399ffb9f771c20b7c59e0bbb7fb24e5c0f53",
+      "sha256:adfd28ba9c940a51c96ee9305e25569b68b26a6bfdd7d9f8248746f54e704989",
+      "sha256:f558e8aa89ca0ef45c5f72bc07bf9fc08e846f41da715a6561b557fa3a8913e3",
+      "sha256:4c17fcb8309531092e3b5d18f412226b871098e854b4e1993261bb8650db653c"
+    ]
+  },
+  "Metadata": {
+    "LastTagTime": "0001-01-01T00:00:00Z"
+  }
+}

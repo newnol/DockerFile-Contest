@@ -1,0 +1,102 @@
+{
+  "Id": "sha256:73157e33acd7d718e28e70bb6e13f9f9ef5dbac628f5af96aaf70a307bf41f30",
+  "RepoTags": [
+    "contest-benchmark:top1"
+  ],
+  "RepoDigests": [],
+  "Parent": "",
+  "Comment": "buildkit.dockerfile.v0",
+  "Created": "2026-11-05T15:41:29.030170552Z",
+  "DockerVersion": "",
+  "Author": "",
+  "Config": {
+    "Hostname": "",
+    "Domainname": "",
+    "User": "65532",
+    "AttachStdin": false,
+    "AttachStdout": false,
+    "AttachStderr": false,
+    "ExposedPorts": {
+      "8080/tcp": {}
+    },
+    "Tty": false,
+    "OpenStdin": false,
+    "StdinOnce": false,
+    "Env": [
+      "PATH=/app/.venv/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt",
+      "PYTHONPATH=/app/src/",
+      "LANG=C.UTF-8",
+      "PYTHONUNBUFFERED=1",
+      "PYTHONFAULTHANDLER=1",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "PYTHONHASHSEED=random",
+      "HOST=0.0.0.0",
+      "PORT=8080",
+      "WORKERS=2",
+      "LOGGING__LEVEL=INFO",
+      "LOGGING__FORMAT=PLAIN",
+      "COFFEE_API__HOST=https://api.sampleapis.com/coffee/",
+      "APP_VERSION=0.1.0",
+      "GIT_COMMIT_SHA=sha",
+      "LD_LIBRARY_PATH=/lib/multi-arch"
+    ],
+    "Cmd": null,
+    "Image": "",
+    "Volumes": null,
+    "WorkingDir": "/app",
+    "Entrypoint": [
+      "python",
+      "src/python_service_template/app.py"
+    ],
+    "OnBuild": null,
+    "Labels": {
+      "image.description": "Secure, minimal Python app using UV and Distroless",
+      "maintainer": "Thanh Nguyen The",
+      "maintainer.company": "VIETNAM NATIONAL CYBER SECURITY TECHNOLOGY CORPORATION",
+      "maintainer.email": "thanhnt.devops@gmail.com",
+      "maintainer.youtube": "DevOps Mentor"
+    }
+  },
+  "Architecture": "amd64",
+  "Os": "linux",
+  "Size": 106766327,
+  "GraphDriver": {
+    "Data": {
+      "LowerDir": "/var/lib/docker/overlay2/2d51b50eb8de82bd7e52a6be14c4bcac44dbb66b86d2ad74a5abbba9d4448a79/diff:/var/lib/docker/overlay2/fc85268e46a982f479b9e00ea2d8a7d6c94b465ae9cb78ad2c689f2f62424903/diff:/var/lib/docker/overlay2/82be6082ca4ea388f0d47c6a629f04a100f912b4bfd5e0bdde9c264f597dfc8f/diff:/var/lib/docker/overlay2/86e97fd1acce022fd7ca683c05f753619eabb7ed7727267d2f3c92ea57551919/diff:/var/lib/docker/overlay2/4ff5e8bf469a356246fdec43090b23ff4eb8b788739b6185cd3a099161deb1b9/diff:/var/lib/docker/overlay2/4b306ff46219e694f1047c467bbf99115251bafe3f8505741d475489d0e4b26c/diff:/var/lib/docker/overlay2/a8b89a5b29ef3869edf97e521bff8d783d6d20781e93086aa693b599390a21a3/diff:/var/lib/docker/overlay2/d75b2f2a38c794f0cbdf4e0c60f47331a55c33e7aa51bfb9550c6d46bed8719d/diff:/var/lib/docker/overlay2/edd41e88380f0f51eff887ab5d1a36f9f03936197c9cb2af599923106126b7d5/diff:/var/lib/docker/overlay2/3040a9393f33e36baf210bc5f27c2e812d15bbee5f2407cd7349938f6b97543b/diff:/var/lib/docker/overlay2/01e481644d764c65512bcc9a975104477681af19c78d16114e3aa0ab9a06b09b/diff:/var/lib/docker/overlay2/d31e45b0b6b131777974c455d04367255d6c46faf70f746a58909b6913c7ca34/diff:/var/lib/docker/overlay2/6d2f7adac544dd51a7f9734795c2a858b962476c4381d2686d51614a96734f3a/diff:/var/lib/docker/overlay2/f2fdfdee91fdd6a89c3db97f4ec3f5bcf278ee0ecc57f31e2bf4e79b51d1a64c/diff:/var/lib/docker/overlay2/fa30607429a46cd00bd20f1becc47e967d0eb032e61cd8bb55446a1e7a37e0a7/diff:/var/lib/docker/overlay2/1dcaf2417b75237af35fa02ff5cc7ce47147defe3267b4661790fd11a15b7d7d/diff:/var/lib/docker/overlay2/4e84ef4d720f5e1717795ada19aeb2a21d21b3a362c40d9e73e098c32cd9e3ae/diff:/var/lib/docker/overlay2/b0a48304f03e9962c5878568fa68f9e192845cdbb9b2e05b9f05b33f7d88e969/diff:/var/lib/docker/overlay2/14a658449209897b52f72e71d0ab0eae24432486c9d3e84c6078432807c1ee32/diff:/var/lib/docker/overlay2/f522f776f38fb665041dd69fbeaf3ba169f06c460e8f93875b68a17d48917399/diff",
+      "MergedDir": "/var/lib/docker/overlay2/6cd1b70bf138fb509e4f490e58ea6e8b8ec456cb855a33cb549e875b508b1d4a/merged",
+      "UpperDir": "/var/lib/docker/overlay2/6cd1b70bf138fb509e4f490e58ea6e8b8ec456cb855a33cb549e875b508b1d4a/diff",
+      "WorkDir": "/var/lib/docker/overlay2/6cd1b70bf138fb509e4f490e58ea6e8b8ec456cb855a33cb549e875b508b1d4a/work"
+    },
+    "Name": "overlay2"
+  },
+  "RootFS": {
+    "Type": "layers",
+    "Layers": [
+      "sha256:bff7f7a9d44356d8784500366094c66399aa6a2edd990cc70e02e27c84402753",
+      "sha256:8fa10c0194df9b7c054c90dbe482585f768a54428fc90a5b78a0066a123b1bba",
+      "sha256:4840c7c54023c867f19564429c89ddae4e9589c83dce82492183a7e9f7dab1fa",
+      "sha256:114dde0fefebbca13165d0da9c500a66190e497a82a53dcaabc3172d630be1e9",
+      "sha256:4d049f83d9cf21d1f5cc0e11deaf36df02790d0e60c1a3829538fb4b61685368",
+      "sha256:af5aa97ebe6ce1604747ec1e21af7136ded391bcabe4acef882e718a87c86bcc",
+      "sha256:6f1cdceb6a3146f0ccb986521156bef8a422cdbb0863396f7f751f575ba308f4",
+      "sha256:bbb6cacb8c82e4da4e8143e03351e939eab5e21ce0ef333c42e637af86c5217b",
+      "sha256:2a92d6ac9e4fcc274d5168b217ca4458a9fec6f094ead68d99c77073f08caac1",
+      "sha256:1a73b54f556b477f0a8b939d13c504a3b4f4db71f7a09c63afbc10acb3de5849",
+      "sha256:f4aee9e53c42a22ed82451218c3ea03d1eea8d6ca8fbe8eb4e950304ba8a8bb3",
+      "sha256:bfe9137a1b044e8097cdfcb6899137a8a984ed70931ed1e8ef0cf7e023a139fc",
+      "sha256:bd29502adf199ad9c03afba9bc79df572a26ec60a2a6ffdda4883a5b7a1632fe",
+      "sha256:8127a9673224dfe54799359062e838de50453d217ddc48df68bf3615828b86d9",
+      "sha256:4d35f3f8027d2079053db270b651cc3052bf04c9603df40ec9c63f13d7181aa8",
+      "sha256:09585c15749a2046d10499cbde9d079adb37d26519d92ba8e2de432ceac84086",
+      "sha256:ab406688a7568e63d577dc8a8e1f7944144b0f50778b6ae95aaf8af7cb404150",
+      "sha256:45203b4a3f709e3eda26a85e3cdc88547ec91300843d082d731d37a4ff02911c",
+      "sha256:a1a5b2962555ce2d11621d5984ed08826db100663ba6e56dd5f970dd4e6535fc",
+      "sha256:3a0a95026ddb5a18b2db130b43719cd2e3fbbc06a3fbc5b26c75c52fd7e4b37e",
+      "sha256:1c998a35ab62a603b806a68b51e538ea80ae0f591ef32d3f870457538829bf2f"
+    ]
+  },
+  "Metadata": {
+    "LastTagTime": "0001-01-01T00:00:00Z"
+  }
+}

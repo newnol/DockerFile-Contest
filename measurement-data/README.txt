@@ -1,3 +1,5 @@
+[LỊCH SỬ - bài nộp 11/2025, đo trên macOS arm64, chưa kiểm chứng lại. Số hiện hành: measurement-data/github-42057474702/comparison/comparison.md]
+
 # 📊 MEASUREMENT DATA - Evidence Package
 
 > **Purpose:** Chứng minh các chỉ số đo được cho Ban Tổ Chức  
