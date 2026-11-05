@@ -1,0 +1,111 @@
+# syntax=docker/dockerfile:1.7
+
+# =============================================================================
+# EXPERIMENTAL: Python FastAPI → Binary với PyInstaller
+# Target: ~40-60MB (giảm 50% so với Alpine standard ~110MB)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Stage 1: Build Python Binary với PyInstaller
+# -----------------------------------------------------------------------------
+    FROM python:3.13-alpine@sha256:e5fa639e49b85986c4481e28faa2564b45aa8021413f31026c3856e5911618b1 AS builder
+
+    ENV PYTHONDONTWRITEBYTECODE=1 \
+        PYTHONUNBUFFERED=1 \
+        PIP_NO_CACHE_DIR=1
+    
+    WORKDIR /build
+    
+    # Install build dependencies + PyInstaller
+    RUN apk add --no-cache \
+        gcc \
+        g++ \
+        musl-dev \
+        linux-headers \
+        binutils \
+        patchelf \
+        upx
+    
+    # Install Python dependencies + PyInstaller
+    # Note: Cần install dependencies trước để PyInstaller bundle được
+    RUN pip install --no-cache-dir \
+        "aiohttp>=3.12.14,<4.0.0" \
+        "asgi-correlation-id>=4.3.4,<5.0.0" \
+        "fastapi>=0.116.0" \
+        "prometheus-fastapi-instrumentator>=7.0.0,<8.0.0" \
+        "pydantic>=2.11.0,<3.0.0" \
+        "pydantic-settings>=2.9.1,<3.0.0" \
+        "structlog>=25.3.0,<26.0.0" \
+        "uvloop>=0.21.0,<0.22.0" \
+        "uvicorn>=0.30.0,<0.31.0" \
+        pyinstaller
+    
+    # Copy source code
+    COPY src/ ./src/
+    
+    # Build binary với PyInstaller
+    # --onefile: Bundle tất cả vào 1 file executable
+    # --strip: Strip debug symbols để giảm size
+    # --clean: Clean temp files
+    # --noupx: Tạm thời disable UPX để debug (enable sau khi stable)
+    RUN pyinstaller \
+        --onefile \
+        --strip \
+        --clean \
+        --name fastapi-app \
+        --hidden-import=uvloop \
+        --hidden-import=uvicorn.logging \
+        --hidden-import=uvicorn.loops \
+        --hidden-import=uvicorn.protocols \
+        --collect-all uvicorn \
+        --collect-all fastapi \
+        src/python_service_template/app.py
+    
+    # [OPTIONAL] Compress binary với UPX (giảm ~40-60% size)
+    # Uncomment dòng dưới sau khi test binary chạy OK
+    # RUN upx --best --lzma /build/dist/fastapi-app
+    
+    # -----------------------------------------------------------------------------
+    # Stage 2: Ultra-minimal Runtime
+    # -----------------------------------------------------------------------------
+    FROM alpine:latest
+    
+    LABEL org.opencontainers.image.title="Python Service Template (PyInstaller)" \
+          org.opencontainers.image.description="FastAPI compiled to binary - Ultra optimized" \
+          org.opencontainers.image.version="0.1.0-pyinstaller" \
+          org.opencontainers.image.authors="newnol <contact@newnol.io.vn>"
+    
+    ENV HOST=0.0.0.0 \
+        PORT=5000 \
+        WORKERS=1 \
+        TZ=UTC
+    
+    WORKDIR /app
+    
+    # Install ONLY runtime dependencies (glibc compatibility)
+    # Alpine uses musl, but PyInstaller binary might need glibc
+    RUN apk add --no-cache \
+        libgcc \
+        libstdc++
+    
+    # Create non-root user
+    RUN addgroup -g 10001 -S app \
+     && adduser -u 10001 -S -G app -h /app -s /sbin/nologin app
+    
+    # Copy binary from builder
+    COPY --from=builder --chown=app:app /build/dist/fastapi-app /app/fastapi-app
+    
+    # Set executable permission
+    RUN chmod 550 /app/fastapi-app
+    
+    USER app
+    
+    EXPOSE 5000
+    
+    # Healthcheck (sử dụng wget vì binary không có Python shell)
+    HEALTHCHECK --interval=15s --timeout=3s --start-period=10s --retries=2 \
+        CMD wget --no-verbose --tries=1 --spider http://127.0.0.1:${PORT}/health/ || exit 1
+    
+    STOPSIGNAL SIGTERM
+    
+    CMD ["/app/fastapi-app"]

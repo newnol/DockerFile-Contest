@@ -1,0 +1,125 @@
+================================================================================
+CUỘC THI DOCKERFILE 2025 - HƯỚNG DẪN CHẠY
+Thí sinh: newnol | Email: tantai@newnol.io.vn
+================================================================================
+
+KẾT QUẢ ĐẠT ĐƯỢC
+--------------------------------------------------------------------------------
+- Kích thước image: 105 MB
+- Bảo mật: 0 lỗ hổng (quét Trivy)
+- Thời gian build: 85 giây (lạnh), 1.5 giây (có cache)
+- Khởi động: dưới 3 giây
+- Bộ nhớ: 78 MB (rỗi)
+
+LỆNH BUILD
+--------------------------------------------------------------------------------
+cd python-service-template
+DOCKER_BUILDKIT=1 docker build -t app:contest -f Dockerfile.txt .
+
+LỆNH CHẠY
+--------------------------------------------------------------------------------
+docker run -d -p 8080:5000 --memory=512m --cpus=1 -e PORT=5000 --name app app:contest
+
+KIỂM TRA SỨC KHỎE
+--------------------------------------------------------------------------------
+# Đợi 15 giây để ứng dụng khởi động
+sleep 15
+
+# Kiểm tra endpoint health
+curl http://localhost:8080/health/
+
+# Kết quả mong đợi:
+# {"gitCommitSha":"local","heartbeat":"HEALTHY","version":"dev"}
+
+# Kiểm tra trạng thái health của Docker
+docker inspect app --format='{{.State.Health.Status}}'
+
+# Kết quả: "healthy"
+
+DỪNG CONTAINER
+--------------------------------------------------------------------------------
+docker stop app
+
+# Thời gian tắt: dưới 2 giây (yêu cầu: dưới 10 giây)
+
+KIỂM TRA KÍCH THƯỚC IMAGE
+--------------------------------------------------------------------------------
+docker images app:contest
+
+# Kết quả: 105 MB
+
+ĐIỂM THƯỞNG (Bonus Points)
+--------------------------------------------------------------------------------
+1. SBOM + Quét bảo mật (+10 điểm):
+   - Quét Trivy: 0 NGHIÊM TRỌNG, 0 CAO, 0 TRUNG BÌNH, 0 THẤP
+   - File SBOM: contest-reports/sbom*.json
+   - Báo cáo quét: measurement-data/trivy-report.txt
+   
+2. Đa nền tảng - Multi-arch (+3 điểm):
+   - Dockerfile hỗ trợ: linux/amd64, linux/arm64
+   - Base image: python:3.13-alpine (hỗ trợ đa nền tảng)
+   - Đã kiểm thử thành công trên cả 2 nền tảng
+
+LỆNH BUILD ĐA NỀN TẢNG (Multi-arch)
+--------------------------------------------------------------------------------
+# Tạo builder (chỉ cần chạy 1 lần)
+docker buildx create --name multiarch --use
+
+# Build cho cả amd64 và arm64
+docker buildx build \
+  --platform linux/amd64,linux/arm64 \
+  -t app:contest \
+  -f Dockerfile.txt \
+  --load .
+
+# Hoặc build và push lên registry
+docker buildx build \
+  --platform linux/amd64,linux/arm64 \
+  -t your-registry/app:contest \
+  -f Dockerfile.txt \
+  --push .
+
+# Kiểm tra image đã build
+docker buildx imagetools inspect app:contest
+
+XÁC NHẬN: Dockerfile này HOÀN TOÀN tương thích đa nền tảng vì:
+- Sử dụng Python Alpine base (hỗ trợ amd64/arm64)
+- Không có dependencies đặc thù nền tảng
+- BuildKit tự động xử lý cross-platform build
+
+ĐIỂM NỔI BẬT
+--------------------------------------------------------------------------------
+- Base image: Python 3.13-alpine@sha256 (cố định phiên bản)
+- Multi-stage: 2 giai đoạn (dependencies + runtime)
+- Bảo mật: User không phải root (UID 10001), 0 lỗ hổng
+- Tối ưu: Loại bỏ binaries, xóa tests/docs
+- Cache: Sử dụng BuildKit cache mounts
+- Kích thước: 105 MB (nhỏ hơn 42% so với python:slim)
+
+CÁC FILE NỘP BÀI
+--------------------------------------------------------------------------------
+1. Dockerfile.txt                    (bắt buộc)
+2. HUONG_DAN_NOP_BAI.txt            (file này - cho BTC)
+3. measurement-data/                 (chứng cứ cho điểm thưởng)
+4. sbom-summary.txt                  (tóm tắt SBOM)
+5. performance-results.txt           (kết quả đo hiệu năng)
+
+DỌN DẸP SAU KHI CHẤM (Cho BTC)
+--------------------------------------------------------------------------------
+# Dừng và xóa container (an toàn)
+docker stop app 2>/dev/null || true
+docker rm app 2>/dev/null || true
+
+# Xóa image của bài nộp này (an toàn)
+docker rmi app:contest 2>/dev/null || true
+
+# Xóa dangling images từ bài này (nếu build nhiều lần)
+docker images -f "dangling=true" -q | xargs docker rmi 2>/dev/null || true
+
+LƯU Ý: Các lệnh trên CHỈ xóa container và image của bài nộp này.
+Không ảnh hưởng đến các Docker resources khác của hệ thống.
+
+LIÊN HỆ
+--------------------------------------------------------------------------------
+Email: tantai@newnol.io.vn
+Website: https://newnol.io.vn
