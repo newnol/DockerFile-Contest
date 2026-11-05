@@ -1,0 +1,89 @@
+{
+  "bounds_issues": [],
+  "overlap_issues": [],
+  "screenshots": [
+    "1280x720-slide-01.png",
+    "1280x720-slide-02.png",
+    "1280x720-slide-03.png",
+    "1280x720-slide-04.png",
+    "1280x720-slide-05.png",
+    "1280x720-slide-06.png",
+    "1280x720-slide-07.png",
+    "1280x720-slide-08.png",
+    "1280x720-slide-09.png",
+    "1280x720-slide-10.png",
+    "1280x720-slide-11.png",
+    "1280x720-slide-12.png",
+    "1280x720-slide-13.png",
+    "1280x720-slide-14.png",
+    "1280x720-slide-15.png",
+    "1280x720-slide-16.png",
+    "1280x720-slide-17.png",
+    "1280x720-slide-18.png",
+    "1280x720-slide-19.png",
+    "1280x720-slide-20.png",
+    "1920x1080-slide-01.png",
+    "1920x1080-slide-14.png",
+    "390x844-slide-01.png",
+    "390x844-slide-14.png",
+    "390x844-slide-17.png",
+    "390x844-slide-18.png"
+  ],
+  "viewports": [
+    {
+      "width": 1280,
+      "height": 720,
+      "slides_checked": 20,
+      "uniform_ratio": true
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "slides_checked": 20,
+      "uniform_ratio": true
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "slides_checked": 20,
+      "uniform_ratio": true
+    }
+  ],
+  "page_errors": [],
+  "external_requests": [],
+  "browser": "156.0.8078.4",
+  "slides": 20,
+  "exact_titles": true,
+  "title_words": [
+    3,
+    2,
+    3,
+    2,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    3,
+    2,
+    2,
+    3,
+    3,
+    3,
+    4
+  ],
+  "longer_supplied_titles": [
+    "Tối ưu có chứng"
+  ],
+  "embedded_font_loaded": true,
+  "navigation": "PASS: keyboard, boundary clamping, button, swipe",
+  "images_decoded": true,
+  "image_count": 0,
+  "network_request_count": 0,
+  "contact_sheet": "contact-sheet.png",
+  "passed": true
+}

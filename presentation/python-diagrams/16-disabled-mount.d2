@@ -1,0 +1,10 @@
+direction: right
+vars: { d2-config: { sketch: false; theme-id: 0 } }
+classes: { node: { width: 260; height: 100; style: { fill: "#eeebe3"; stroke: "#c9c9bf"; font-color: "#69716b"; font-size: 26; border-radius: 12; stroke-width: 2 } } }
+a: "Mount pip cache" { class: node }
+b: "--no-cache-dir" { class: node }
+b.style: { fill: "#f4e5da"; stroke: "#bd583e"; font-color: "#bd583e"; stroke-width: 4 }
+c: "Không dùng cache pip" { class: node }
+c.style: { fill: "#f4e5da"; stroke: "#bd583e"; font-color: "#bd583e"; stroke-width: 4 }
+a -> b: { style: { stroke: "#9b9f95"; stroke-width: 3 } }
+b -> c: { style: { stroke: "#9b9f95"; stroke-width: 3 } }

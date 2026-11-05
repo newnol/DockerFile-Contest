@@ -1,0 +1,123 @@
+{
+  "d2_version": "v0.9.0",
+  "release": "https://github.com/d2lang/d2/releases/tag/v0.9.0",
+  "archive_sha256": "5669ddc46b99e942cc96078f4a4e36d5e62103348f4c05179ede27802fdd87a9",
+  "render_command": "d2 --layout=dagre --pad=35 INPUT.d2 OUTPUT.svg",
+  "diagrams": [
+    {
+      "source": "presentation/python-diagrams/02-ctf.d2",
+      "svg": "presentation/python-diagrams/02-ctf.svg",
+      "sha256": "9045150631f51face57e4a24297bbbe910c6af7ae3b3d6c30c1a804b5e41cfa7"
+    },
+    {
+      "source": "presentation/python-diagrams/03-image.d2",
+      "svg": "presentation/python-diagrams/03-image.svg",
+      "sha256": "f8947e7d8ad531f0437e6599f5dfef778d384d55cdedd5cfa879d52f27dc046f"
+    },
+    {
+      "source": "presentation/python-diagrams/10-cache-input.d2",
+      "svg": "presentation/python-diagrams/10-cache-input.svg",
+      "sha256": "0734a648a4ef4b3bedbaceaa0482457ebec1fb23fcb43bbdcc4c6553bcea882b"
+    },
+    {
+      "source": "presentation/python-diagrams/11-cache-miss.d2",
+      "svg": "presentation/python-diagrams/11-cache-miss.svg",
+      "sha256": "48d9539132f1e2ce6d870131ae905bcdaa1c9796e243fbdc8fe67277133f2e8c"
+    },
+    {
+      "source": "presentation/python-diagrams/12-cache-order.d2",
+      "svg": "presentation/python-diagrams/12-cache-order.svg",
+      "sha256": "ae89d1476b575590ee7c1d00950cc68f6022f88efc27397bcec1e0668ad5f18d"
+    },
+    {
+      "source": "presentation/python-diagrams/13-cache-hit.d2",
+      "svg": "presentation/python-diagrams/13-cache-hit.svg",
+      "sha256": "2fc5154d16b3d8d18de44bf5fc8a767c1a77ff070297942ba033b50cd013c0f8"
+    },
+    {
+      "source": "presentation/python-diagrams/14-layer-cache.d2",
+      "svg": "presentation/python-diagrams/14-layer-cache.svg",
+      "sha256": "ad5f29f045a30a0005f59e99a18d0a2921f1b8270b1616784ea4456aeaa02d01"
+    },
+    {
+      "source": "presentation/python-diagrams/15-cache-mount.d2",
+      "svg": "presentation/python-diagrams/15-cache-mount.svg",
+      "sha256": "d77b707bd88a81632660e4f41712782d2150fa4e5a1de9d6a118b6a79d4a32c2"
+    },
+    {
+      "source": "presentation/python-diagrams/16-disabled-mount.d2",
+      "svg": "presentation/python-diagrams/16-disabled-mount.svg",
+      "sha256": "87433f585bfc8180cc87c17104c8eb662ebc84d345e7c60f6db46013afb4a1b3"
+    },
+    {
+      "source": "presentation/python-diagrams/17-builder.d2",
+      "svg": "presentation/python-diagrams/17-builder.svg",
+      "sha256": "3a4897b711e6060042fe405a20881e0ee2a903fea486593ec5ee5ca4d7df380f"
+    },
+    {
+      "source": "presentation/python-diagrams/18-artifact.d2",
+      "svg": "presentation/python-diagrams/18-artifact.svg",
+      "sha256": "050a442dc2f7bb6811ee2badf00c746194b05173d0130a2b14722cd308296388"
+    },
+    {
+      "source": "presentation/python-diagrams/19-runtime.d2",
+      "svg": "presentation/python-diagrams/19-runtime.svg",
+      "sha256": "2e92e5c26aeee2832cda12a919d4718ef6d9bd3372b51e064be9c2c318678cd7"
+    },
+    {
+      "source": "presentation/python-diagrams/21-compatibility.d2",
+      "svg": "presentation/python-diagrams/21-compatibility.svg",
+      "sha256": "029359eb721cb1493ecbba133127a175fdcf753af3210812e4eddef9ae7e8016"
+    },
+    {
+      "source": "presentation/python-diagrams/22-tag.d2",
+      "svg": "presentation/python-diagrams/22-tag.svg",
+      "sha256": "ca3a6938595189796d17d0e2bfcfecde95a770fa7dc3f22aae5ea8330252810b"
+    },
+    {
+      "source": "presentation/python-diagrams/23-digest.d2",
+      "svg": "presentation/python-diagrams/23-digest.svg",
+      "sha256": "cee599f119a7e786fab5e2c27c56e3e734356fc01eadefed6ec300fde675e1f8"
+    },
+    {
+      "source": "presentation/python-diagrams/24-pin-scope.d2",
+      "svg": "presentation/python-diagrams/24-pin-scope.svg",
+      "sha256": "91e0c69b6fbe124896f08f687e2d3d42f3992ed750950ca15666a8a0100cc998"
+    },
+    {
+      "source": "presentation/python-diagrams/28-build-sequence.d2",
+      "svg": "presentation/python-diagrams/28-build-sequence.svg",
+      "sha256": "5c2511d4ef07defd3cad70b669c77a42677bdfa3a28cfbb15f0bc1e85ea4846e"
+    },
+    {
+      "source": "presentation/python-diagrams/29-ci-runners.d2",
+      "svg": "presentation/python-diagrams/29-ci-runners.svg",
+      "sha256": "ca4ae3b9c7c48f7aa3a873e3131da233a0514259ae5c145acfc6212a3bac5936"
+    },
+    {
+      "source": "presentation/python-diagrams/30-ci-evidence.d2",
+      "svg": "presentation/python-diagrams/30-ci-evidence.svg",
+      "sha256": "b215fbaae6a617bae9b3322462823e262a65b660b455f3bf30b2ffad4a64fe75"
+    },
+    {
+      "source": "presentation/python-diagrams/36-request-check.d2",
+      "svg": "presentation/python-diagrams/36-request-check.svg",
+      "sha256": "99af779aba05ab1d0bac70988599931627eed6c8ea404a0f7e908fb94517ba01"
+    },
+    {
+      "source": "presentation/python-diagrams/37-dependency-fail.d2",
+      "svg": "presentation/python-diagrams/37-dependency-fail.svg",
+      "sha256": "5f225689618eaf3bbb9b1c45bfe7da663efd018584f1c60cc555854d826a2926"
+    },
+    {
+      "source": "presentation/python-diagrams/38-dependency-pin.d2",
+      "svg": "presentation/python-diagrams/38-dependency-pin.svg",
+      "sha256": "880e30856b9dc56a6a689771cbf893f9c8555d69ec54eef262845a451e15678b"
+    },
+    {
+      "source": "presentation/python-diagrams/40-decision.d2",
+      "svg": "presentation/python-diagrams/40-decision.svg",
+      "sha256": "2e7e7a016e3fde90f972aa3872dcbe3dd426f82ecfba726b08ea0d3126166bfc"
+    }
+  ]
+}

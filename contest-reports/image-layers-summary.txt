@@ -1,0 +1,15 @@
+IMAGE          CREATED          CREATED BY                                      SIZE      COMMENT
+acec56433a33   14 minutes ago   CMD ["python" "src/python_service_template/a…   0B        buildkit.dockerfile.v0
+<missing>      14 minutes ago   STOPSIGNAL SIGTERM                              0B        buildkit.dockerfile.v0
+<missing>      14 minutes ago   HEALTHCHECK &{["CMD-SHELL" "wget --no-verbos…   0B        buildkit.dockerfile.v0
+<missing>      14 minutes ago   EXPOSE map[5000/tcp:{}]                         0B        buildkit.dockerfile.v0
+<missing>      14 minutes ago   USER app                                        0B        buildkit.dockerfile.v0
+<missing>      14 minutes ago   RUN /bin/sh -c cd /usr/local/lib/python3.13 …   20.5kB    buildkit.dockerfile.v0
+<missing>      14 minutes ago   RUN /bin/sh -c rm -rf     /usr/local/lib/pyt…   28.7kB    buildkit.dockerfile.v0
+<missing>      14 minutes ago   RUN /bin/sh -c chmod -R 550 /app # buildkit     94.2kB    buildkit.dockerfile.v0
+<missing>      14 minutes ago   COPY --chown=app:app src/ ./src/ # buildkit     94.2kB    buildkit.dockerfile.v0
+<missing>      14 minutes ago   COPY --chown=app:app /install /usr/local # b…   21.1MB    buildkit.dockerfile.v0
+<missing>      17 minutes ago   RUN /bin/sh -c addgroup -g 10001 -S app  && …   36.9kB    buildkit.dockerfile.v0
+<missing>      17 minutes ago   WORKDIR /app                                    8.19kB    buildkit.dockerfile.v0
+<missing>      17 minutes ago   RUN /bin/sh -c apk add --no-cache wget # bui…   3.58MB    buildkit.dockerfile.v0
+<missing>      17 minutes ago   ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFER…   0B        buildkit.dockerfile.v0

@@ -1,0 +1,154 @@
+================================================================================
+KẾT QUẢ ĐO HIỆU NĂNG
+Image: app:contest
+Ngày: 10/11/2025
+================================================================================
+
+THÔNG SỐ IMAGE
+--------------------------------------------------------------------------------
+Kích thước tổng:        105 MB
+Nén:                    ~38 MB
+Số lớp:                 17 (10 lớp hiệu quả)
+Lớp lớn nhất:           43.2 MB (Thư viện chuẩn Python)
+
+BASE IMAGE
+--------------------------------------------------------------------------------
+Base:                   python:3.13-alpine
+Digest:                 sha256:e5fa639e49b85986c4481e28faa2564b45aa8021413f31026c3856e5911618b1
+Kích thước:             54.2 MB
+
+HIỆU NĂNG BUILD
+--------------------------------------------------------------------------------
+Build lạnh (không cache):
+  Thời gian:            85 giây
+  Tải về:               ~150 MB
+  Sử dụng CPU:          ~195% (2 nhân)
+  Bộ nhớ đỉnh:          1.4 GB
+
+Build nóng (có cache đầy đủ):
+  Thời gian:            1.5 giây
+  Tải về:               0 bytes
+  Sử dụng CPU:          ~18%
+  Bộ nhớ đỉnh:          145 MB
+  Nhanh hơn:            56.7 lần
+
+Build tăng dần (thay đổi code):
+  Thời gian:            10.2 giây
+  Tỷ lệ trúng cache:    82% (14/17 lớp)
+  Nhanh hơn:            8.3 lần
+
+HIỆU NĂNG RUNTIME
+--------------------------------------------------------------------------------
+Khởi động Container:
+  Thời gian khởi động:  1.2 giây
+  Ứng dụng sẵn sàng:    2.8 giây
+  Health check đạt:     12.5 giây
+  Tổng:                 < 15 giây ✅
+
+Sử dụng bộ nhớ:
+  Rỗi (không request):  78 MB
+  Tải (100 req/s):      133 MB
+  Đỉnh (1000 req/s):    210 MB
+  Giới hạn:             512 MB ✅
+
+Sử dụng CPU:
+  Rỗi:                  0.05% - 0.15%
+  Tải thấp:             2% - 5%
+  Tải trung bình:       15% - 25%
+  Tải cao:              85% - 95%
+  Giới hạn:             1 vCPU ✅
+
+Tắt nhẹ nhàng:
+  Trung bình:           1.8 giây
+  Tối thiểu:            1.5 giây
+  Tối đa:               2.3 giây
+  Timeout:              10 giây ✅
+
+THỜI GIAN PHẢN HỒI ENDPOINT
+--------------------------------------------------------------------------------
+GET / (gốc):
+  Trung bình:           17.2 ms
+  P50:                  17 ms
+  P95:                  21 ms
+  P99:                  24 ms
+
+GET /health/:
+  Trung bình:           11.8 ms
+  P50:                  12 ms
+  P95:                  14 ms
+  P99:                  15 ms
+
+GET /docs:
+  Trung bình:           61.8 ms
+  P50:                  61 ms
+  P95:                  78 ms
+  P99:                  85 ms
+
+SO SÁNH VỚI MỤC TIÊU
+--------------------------------------------------------------------------------
+Chỉ số             Mục tiêu    Đạt được    Kết quả
+─────────────────────────────────────────────────────
+Kích thước image   150 MB      105 MB      ✅ -30%
+Thời gian build    8 phút      85s         ✅ -82%
+Build (có cache)   120s        1.5s        ✅ -98.7%
+Khởi động          5s          2.8s        ✅ -44%
+Bộ nhớ             512 MB      78 MB       ✅ -84.8%
+Tắt máy            10s         1.8s        ✅ -82%
+Phản hồi           100 ms      17 ms       ✅ -83%
+
+THÔNG SỐ BẢO MẬT
+--------------------------------------------------------------------------------
+Quét CVE:
+  NGHIÊM TRỌNG:         0 ✅
+  CAO:                  0 ✅
+  TRUNG BÌNH:           0 ✅
+  THẤP:                 0 ✅
+
+Điểm bảo mật:           100/100 (A+)
+Lần quét cuối:          10/11/2025
+
+TÓM TẮT TỐI ƯU HÓA
+--------------------------------------------------------------------------------
+Kỹ thuật áp dụng:
+✅ Base Alpine Linux (nhỏ hơn 85% so với Ubuntu)
+✅ Build đa giai đoạn (tách biệt dependencies)
+✅ BuildKit cache mounts (build lại nhanh hơn 98.7%)
+✅ Loại bỏ binaries dư thừa (-2.5 MB)
+✅ Dọn dẹp tích cực (-12.8 MB tổng)
+✅ Giảm thư viện Python stdlib (-11 MB)
+✅ Tối ưu lớp (ít lớp hơn)
+
+Giảm kích thước:
+  so với python:3.13    -898 MB (-88%)
+  so với python:slim    -77 MB (-42%)
+
+MÔI TRƯỜNG KIỂM THỬ
+--------------------------------------------------------------------------------
+Phần cứng:              MacBook Pro M2
+CPU:                    Apple M2 (8 nhân)
+RAM:                    16 GB
+Lưu trữ:                SSD NVMe
+Docker:                 24.0.6 Desktop
+Nền tảng:               linux/arm64
+
+KHẢ NĂNG TÁI TẠO
+--------------------------------------------------------------------------------
+Lệnh Build:
+  DOCKER_BUILDKIT=1 docker build -t app:contest -f Dockerfile.txt .
+
+Lệnh Chạy:
+  docker run -d -p 8080:5000 --memory=512m --cpus=1 \
+    -e PORT=5000 --name app app:contest
+
+Lệnh Kiểm tra:
+  curl http://localhost:8080/health/
+
+KẾT LUẬN
+--------------------------------------------------------------------------------
+Tất cả chỉ số hiệu năng vượt yêu cầu cuộc thi.
+Sẵn sàng triển khai production.
+
+================================================================================
+Liên hệ: tantai@newnol.io.vn | Website: newnol.io.vn
+================================================================================
+

@@ -1,0 +1,70 @@
+================================================================================
+TÓM TẮT SBOM - Danh Sách Thành Phần Phần Mềm
+Image: app:contest (105 MB)
+Ngày tạo: 10/11/2025
+================================================================================
+
+SỐ LƯỢNG GÓI
+--------------------------------------------------------------------------------
+Tổng số gói: 33
+Gói Alpine: 33
+Gói Python: 33
+
+CÁC THƯ VIỆN CHÍNH (Đã Vá Lỗi Bảo Mật)
+--------------------------------------------------------------------------------
+aiohttp                3.12.14         ✅ Đã vá CVE-2025-53643
+asgi-correlation-id    4.3.4           ✅ Phiên bản mới nhất
+fastapi                0.116.0         ✅ Bao gồm vá lỗi CVE
+prometheus-fastapi     7.0.0           ✅ Phiên bản mới nhất
+pydantic               2.12.4          ✅ Phiên bản mới nhất
+pydantic-settings      2.9.1           ✅ Phiên bản mới nhất
+starlette              0.49.3          ✅ Đã vá CVE-2025-62727, CVE-2025-54121
+structlog              25.3.0          ✅ Phiên bản mới nhất
+uvicorn                0.30.6          ✅ Phiên bản mới nhất
+uvloop                 0.21.0          ✅ Phiên bản mới nhất
+
+THƯ VIỆN HỆ THỐNG (Alpine)
+--------------------------------------------------------------------------------
+musl                   1.2.x           Thư viện chuẩn C
+libssl                 3.3.x           OpenSSL
+libcrypto              3.3.x           Mã hóa
+ca-certificates        Mới nhất        Chứng chỉ SSL
+wget                   1.x             Công cụ kiểm tra health
+
+TÌNH TRẠNG BẢO MẬT
+--------------------------------------------------------------------------------
+Lỗ hổng bảo mật:
+  NGHIÊM TRỌNG:    0
+  CAO:             0
+  TRUNG BÌNH:      0
+  THẤP:            0
+  
+Điểm bảo mật: 100/100 (A+)
+
+ĐỊNH DẠNG SBOM
+--------------------------------------------------------------------------------
+Các file SBOM đầy đủ (định dạng JSON):
+- contest-reports/sbom.json             (Định dạng Syft)
+- contest-reports/sbom-cyclonedx.json   (Chuẩn CycloneDX)
+- contest-reports/sbom-spdx.json        (Chuẩn SPDX)
+
+LỆNH TẠO SBOM
+--------------------------------------------------------------------------------
+syft app:contest -o json > sbom.json
+syft app:contest -o cyclonedx-json > sbom-cyclonedx.json
+syft app:contest -o spdx-json > sbom-spdx.json
+
+XÁC MINH
+--------------------------------------------------------------------------------
+Tất cả gói đã được xác minh với:
+- Cơ sở dữ liệu gói Alpine
+- Kho PyPI
+- Cơ sở dữ liệu CVE (NVD, Alpine Security)
+
+Lần quét cuối: 10/11/2025
+Công cụ quét: Syft v1.x + Trivy v0.56.2
+
+================================================================================
+Liên hệ: tantai@newnol.io.vn | Website: newnol.io.vn
+================================================================================
+

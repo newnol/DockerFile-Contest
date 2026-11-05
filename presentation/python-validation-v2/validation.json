@@ -1,0 +1,981 @@
+{
+  "slides": 40,
+  "viewports": {
+    "desktop": [
+      {
+        "issues": [],
+        "title": "Tối ưu Dockerfile",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 1
+      },
+      {
+        "issues": [],
+        "title": "Từ CTF",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 2
+      },
+      {
+        "issues": [],
+        "title": "Mở image",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 3
+      },
+      {
+        "issues": [],
+        "title": "Bốn cách đóng",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 4
+      },
+      {
+        "issues": [],
+        "title": "Xếp từng lớp",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 5
+      },
+      {
+        "issues": [],
+        "title": "Nhìn hợp nhất",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 6
+      },
+      {
+        "issues": [],
+        "title": "Thêm rồi xóa",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 7
+      },
+      {
+        "issues": [],
+        "title": "Byte vẫn còn",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 8
+      },
+      {
+        "issues": [],
+        "title": "Dọn cùng bước",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 9
+      },
+      {
+        "issues": [],
+        "title": "Source đổi trước",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 10
+      },
+      {
+        "issues": [],
+        "title": "Cache mất theo",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 11
+      },
+      {
+        "issues": [],
+        "title": "Đổi thứ tự",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 12
+      },
+      {
+        "issues": [],
+        "title": "Cache được giữ",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 13
+      },
+      {
+        "issues": [],
+        "title": "Bỏ qua RUN",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 14
+      },
+      {
+        "issues": [],
+        "title": "Tải lại ít",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 15
+      },
+      {
+        "issues": [],
+        "title": "Mount bị vô hiệu",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 16
+      },
+      {
+        "issues": [],
+        "title": "Builder cần gì",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 17
+      },
+      {
+        "issues": [],
+        "title": "Chuyển artifact",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 18
+      },
+      {
+        "issues": [],
+        "title": "Runtime giữ gì",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 19
+      },
+      {
+        "issues": [],
+        "title": "Chọn base image",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 20
+      },
+      {
+        "issues": [],
+        "title": "Kiểm tra tương thích",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 21
+      },
+      {
+        "issues": [],
+        "title": "Tag có đổi",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 22
+      },
+      {
+        "issues": [],
+        "title": "Digest giữ nội dung",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 23
+      },
+      {
+        "issues": [],
+        "title": "Pin chưa hết",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 24
+      },
+      {
+        "issues": [],
+        "title": "Strip bỏ gì",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 25
+      },
+      {
+        "issues": [],
+        "title": "Dọn có giá",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 26
+      },
+      {
+        "issues": [],
+        "title": "Chốt điều kiện",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 27
+      },
+      {
+        "issues": [],
+        "title": "Ba lượt build",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 28
+      },
+      {
+        "issues": [],
+        "title": "Bốn runner riêng",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 29
+      },
+      {
+        "issues": [],
+        "title": "Gom bằng chứng",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 30
+      },
+      {
+        "issues": [],
+        "title": "Kích thước image",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 31
+      },
+      {
+        "issues": [],
+        "title": "Nhỏ chưa nhanh",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 32
+      },
+      {
+        "issues": [],
+        "title": "Build có cache",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 33
+      },
+      {
+        "issues": [],
+        "title": "Khi sửa source",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 34
+      },
+      {
+        "issues": [],
+        "title": "Container đã lên",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 35
+      },
+      {
+        "issues": [],
+        "title": "Request mới biết",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 36
+      },
+      {
+        "issues": [],
+        "title": "FastAPI lệch phiên bản",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 37
+      },
+      {
+        "issues": [],
+        "title": "Pin rồi thử",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 38
+      },
+      {
+        "issues": [],
+        "title": "Đọc đúng số",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 39
+      },
+      {
+        "issues": [],
+        "title": "Đo rồi chọn",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 40
+      }
+    ],
+    "laptop": [
+      {
+        "issues": [],
+        "title": "Tối ưu Dockerfile",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 1
+      },
+      {
+        "issues": [],
+        "title": "Từ CTF",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 2
+      },
+      {
+        "issues": [],
+        "title": "Mở image",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 3
+      },
+      {
+        "issues": [],
+        "title": "Bốn cách đóng",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 4
+      },
+      {
+        "issues": [],
+        "title": "Xếp từng lớp",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 5
+      },
+      {
+        "issues": [],
+        "title": "Nhìn hợp nhất",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 6
+      },
+      {
+        "issues": [],
+        "title": "Thêm rồi xóa",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 7
+      },
+      {
+        "issues": [],
+        "title": "Byte vẫn còn",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 8
+      },
+      {
+        "issues": [],
+        "title": "Dọn cùng bước",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 9
+      },
+      {
+        "issues": [],
+        "title": "Source đổi trước",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 10
+      },
+      {
+        "issues": [],
+        "title": "Cache mất theo",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 11
+      },
+      {
+        "issues": [],
+        "title": "Đổi thứ tự",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 12
+      },
+      {
+        "issues": [],
+        "title": "Cache được giữ",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 13
+      },
+      {
+        "issues": [],
+        "title": "Bỏ qua RUN",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 14
+      },
+      {
+        "issues": [],
+        "title": "Tải lại ít",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 15
+      },
+      {
+        "issues": [],
+        "title": "Mount bị vô hiệu",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 16
+      },
+      {
+        "issues": [],
+        "title": "Builder cần gì",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 17
+      },
+      {
+        "issues": [],
+        "title": "Chuyển artifact",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 18
+      },
+      {
+        "issues": [],
+        "title": "Runtime giữ gì",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 19
+      },
+      {
+        "issues": [],
+        "title": "Chọn base image",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 20
+      },
+      {
+        "issues": [],
+        "title": "Kiểm tra tương thích",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 21
+      },
+      {
+        "issues": [],
+        "title": "Tag có đổi",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 22
+      },
+      {
+        "issues": [],
+        "title": "Digest giữ nội dung",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 23
+      },
+      {
+        "issues": [],
+        "title": "Pin chưa hết",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 24
+      },
+      {
+        "issues": [],
+        "title": "Strip bỏ gì",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 25
+      },
+      {
+        "issues": [],
+        "title": "Dọn có giá",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 26
+      },
+      {
+        "issues": [],
+        "title": "Chốt điều kiện",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 27
+      },
+      {
+        "issues": [],
+        "title": "Ba lượt build",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 28
+      },
+      {
+        "issues": [],
+        "title": "Bốn runner riêng",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 29
+      },
+      {
+        "issues": [],
+        "title": "Gom bằng chứng",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 30
+      },
+      {
+        "issues": [],
+        "title": "Kích thước image",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 31
+      },
+      {
+        "issues": [],
+        "title": "Nhỏ chưa nhanh",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 32
+      },
+      {
+        "issues": [],
+        "title": "Build có cache",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 33
+      },
+      {
+        "issues": [],
+        "title": "Khi sửa source",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 34
+      },
+      {
+        "issues": [],
+        "title": "Container đã lên",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 35
+      },
+      {
+        "issues": [],
+        "title": "Request mới biết",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 36
+      },
+      {
+        "issues": [],
+        "title": "FastAPI lệch phiên bản",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 37
+      },
+      {
+        "issues": [],
+        "title": "Pin rồi thử",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 38
+      },
+      {
+        "issues": [],
+        "title": "Đọc đúng số",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 39
+      },
+      {
+        "issues": [],
+        "title": "Đo rồi chọn",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 40
+      }
+    ],
+    "mobile": [
+      {
+        "issues": [],
+        "title": "Tối ưu Dockerfile",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 1
+      },
+      {
+        "issues": [],
+        "title": "Từ CTF",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 2
+      },
+      {
+        "issues": [],
+        "title": "Mở image",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 3
+      },
+      {
+        "issues": [],
+        "title": "Bốn cách đóng",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 4
+      },
+      {
+        "issues": [],
+        "title": "Xếp từng lớp",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 5
+      },
+      {
+        "issues": [],
+        "title": "Nhìn hợp nhất",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 6
+      },
+      {
+        "issues": [],
+        "title": "Thêm rồi xóa",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 7
+      },
+      {
+        "issues": [],
+        "title": "Byte vẫn còn",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 8
+      },
+      {
+        "issues": [],
+        "title": "Dọn cùng bước",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 9
+      },
+      {
+        "issues": [],
+        "title": "Source đổi trước",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 10
+      },
+      {
+        "issues": [],
+        "title": "Cache mất theo",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 11
+      },
+      {
+        "issues": [],
+        "title": "Đổi thứ tự",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 12
+      },
+      {
+        "issues": [],
+        "title": "Cache được giữ",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 13
+      },
+      {
+        "issues": [],
+        "title": "Bỏ qua RUN",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 14
+      },
+      {
+        "issues": [],
+        "title": "Tải lại ít",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 15
+      },
+      {
+        "issues": [],
+        "title": "Mount bị vô hiệu",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 16
+      },
+      {
+        "issues": [],
+        "title": "Builder cần gì",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 17
+      },
+      {
+        "issues": [],
+        "title": "Chuyển artifact",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 18
+      },
+      {
+        "issues": [],
+        "title": "Runtime giữ gì",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 19
+      },
+      {
+        "issues": [],
+        "title": "Chọn base image",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 20
+      },
+      {
+        "issues": [],
+        "title": "Kiểm tra tương thích",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 21
+      },
+      {
+        "issues": [],
+        "title": "Tag có đổi",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 22
+      },
+      {
+        "issues": [],
+        "title": "Digest giữ nội dung",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 23
+      },
+      {
+        "issues": [],
+        "title": "Pin chưa hết",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 24
+      },
+      {
+        "issues": [],
+        "title": "Strip bỏ gì",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 25
+      },
+      {
+        "issues": [],
+        "title": "Dọn có giá",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 26
+      },
+      {
+        "issues": [],
+        "title": "Chốt điều kiện",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 27
+      },
+      {
+        "issues": [],
+        "title": "Ba lượt build",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 28
+      },
+      {
+        "issues": [],
+        "title": "Bốn runner riêng",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 29
+      },
+      {
+        "issues": [],
+        "title": "Gom bằng chứng",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 30
+      },
+      {
+        "issues": [],
+        "title": "Kích thước image",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 31
+      },
+      {
+        "issues": [],
+        "title": "Nhỏ chưa nhanh",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 32
+      },
+      {
+        "issues": [],
+        "title": "Build có cache",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 33
+      },
+      {
+        "issues": [],
+        "title": "Khi sửa source",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 34
+      },
+      {
+        "issues": [],
+        "title": "Container đã lên",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 35
+      },
+      {
+        "issues": [],
+        "title": "Request mới biết",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 36
+      },
+      {
+        "issues": [],
+        "title": "FastAPI lệch phiên bản",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 37
+      },
+      {
+        "issues": [],
+        "title": "Pin rồi thử",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 38
+      },
+      {
+        "issues": [],
+        "title": "Đọc đúng số",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 39
+      },
+      {
+        "issues": [],
+        "title": "Đo rồi chọn",
+        "images": true,
+        "ratio": 1.7777777777777777,
+        "slide": 40
+      }
+    ]
+  },
+  "errors": [],
+  "external_requests": [],
+  "navigation": {
+    "keyboard_and_buttons": "passed",
+    "swipe": "passed"
+  },
+  "diagrams": [
+    {
+      "file": "02-ctf.svg",
+      "text_overlaps": []
+    },
+    {
+      "file": "03-image.svg",
+      "text_overlaps": []
+    },
+    {
+      "file": "10-cache-input.svg",
+      "text_overlaps": []
+    },
+    {
+      "file": "11-cache-miss.svg",
+      "text_overlaps": []
+    },
+    {
+      "file": "12-cache-order.svg",
+      "text_overlaps": []
+    },
+    {
+      "file": "13-cache-hit.svg",
+      "text_overlaps": []
+    },
+    {
+      "file": "14-layer-cache.svg",
+      "text_overlaps": []
+    },
+    {
+      "file": "15-cache-mount.svg",
+      "text_overlaps": []
+    },
+    {
+      "file": "16-disabled-mount.svg",
+      "text_overlaps": []
+    },
+    {
+      "file": "17-builder.svg",
+      "text_overlaps": []
+    },
+    {
+      "file": "18-artifact.svg",
+      "text_overlaps": []
+    },
+    {
+      "file": "19-runtime.svg",
+      "text_overlaps": []
+    },
+    {
+      "file": "21-compatibility.svg",
+      "text_overlaps": []
+    },
+    {
+      "file": "22-tag.svg",
+      "text_overlaps": []
+    },
+    {
+      "file": "23-digest.svg",
+      "text_overlaps": []
+    },
+    {
+      "file": "24-pin-scope.svg",
+      "text_overlaps": []
+    },
+    {
+      "file": "28-build-sequence.svg",
+      "text_overlaps": []
+    },
+    {
+      "file": "29-ci-runners.svg",
+      "text_overlaps": []
+    },
+    {
+      "file": "30-ci-evidence.svg",
+      "text_overlaps": []
+    },
+    {
+      "file": "36-request-check.svg",
+      "text_overlaps": []
+    },
+    {
+      "file": "37-dependency-fail.svg",
+      "text_overlaps": []
+    },
+    {
+      "file": "38-dependency-pin.svg",
+      "text_overlaps": []
+    },
+    {
+      "file": "40-decision.svg",
+      "text_overlaps": []
+    }
+  ],
+  "transitions": [
+    {
+      "from": 10,
+      "to": 11,
+      "active_opacity_at_capture": "0.852432"
+    },
+    {
+      "from": 12,
+      "to": 13,
+      "active_opacity_at_capture": "0.731281"
+    },
+    {
+      "from": 17,
+      "to": 18,
+      "active_opacity_at_capture": "0.678109"
+    },
+    {
+      "from": 29,
+      "to": 30,
+      "active_opacity_at_capture": "0.616702"
+    },
+    {
+      "from": 37,
+      "to": 38,
+      "active_opacity_at_capture": "0.677951"
+    }
+  ],
+  "reduced_motion": "0s",
+  "no_autoplay": true,
+  "passed": true
+}

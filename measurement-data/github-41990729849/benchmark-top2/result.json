@@ -1,0 +1,32 @@
+{
+  "variant": "top2",
+  "commit": "03f0cd1cfc5dcc634c4669cb1e08ed319b03c11c",
+  "platform": "linux/amd64",
+  "runner": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+  "cpu_count": 4,
+  "builds": {
+    "cold": {
+      "seconds": 22.127,
+      "exit_code": 0,
+      "cached_log_lines": 0
+    },
+    "warm": {
+      "seconds": 0.498,
+      "exit_code": 0,
+      "cached_log_lines": 12
+    },
+    "source-change": {
+      "seconds": 0.802,
+      "exit_code": 0,
+      "cached_log_lines": 8
+    }
+  },
+  "image_id": "sha256:23f722086c30c2f48ddc54866df42ac85d8d753341b5aeffb3b605605855ac84",
+  "image_bytes": 68934016,
+  "layer_count": 12,
+  "configured_user": "app",
+  "base_images": [],
+  "runtime": "failed",
+  "last_probe_error": "HTTP Error 500: Internal Server Error",
+  "stop_seconds": 0.435
+}

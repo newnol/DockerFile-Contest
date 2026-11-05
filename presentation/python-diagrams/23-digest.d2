@@ -1,0 +1,13 @@
+direction: right
+vars: { d2-config: { sketch: false; theme-id: 0 } }
+classes: { node: { width: 260; height: 100; style: { fill: "#eeebe3"; stroke: "#c9c9bf"; font-color: "#69716b"; font-size: 26; border-radius: 12; stroke-width: 2 } } }
+a: "image@sha256:…" { class: node }
+a.style: { fill: "#e4ece3"; stroke: "#37775e"; font-color: "#252827"; stroke-width: 4 }
+b: "Thời điểm T1" { class: node }
+c: "Thời điểm T2" { class: node }
+d: "Cùng nội dung" { class: node }
+d.style: { fill: "#e4ece3"; stroke: "#37775e"; font-color: "#252827"; stroke-width: 4 }
+a -> b: { style: { stroke: "#9b9f95"; stroke-width: 3 } }
+a -> c: { style: { stroke: "#9b9f95"; stroke-width: 3 } }
+b -> d: { style: { stroke: "#9b9f95"; stroke-width: 3 } }
+c -> d: { style: { stroke: "#9b9f95"; stroke-width: 3 } }

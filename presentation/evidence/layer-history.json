@@ -1,0 +1,122 @@
+[
+  {
+    "instruction": "apko",
+    "size": 7209382,
+    "digest": "sha256:8fcdc21c85f290b5c04f7d63644c5acfb87d4eb6d658f5ab55a5800d6490f37e"
+  },
+  {
+    "instruction": "apko",
+    "size": 7293030,
+    "digest": "sha256:81ac36f4bee4102128a3f1f63d1a2a057922351d656f4a4fcdb1b92cd28a95f2"
+  },
+  {
+    "instruction": "apko",
+    "size": 1127208,
+    "digest": "sha256:7f3cc23f95424a2268090e9d9f9a2e0ac29f2410e2d67e26a001b20f28576fc7"
+  },
+  {
+    "instruction": "apko",
+    "size": 805495,
+    "digest": "sha256:6e407bcb887726ad7e338d379446cbf49f43f2fd46cfa16e15d9d792b459704b"
+  },
+  {
+    "instruction": "apko",
+    "size": 704048,
+    "digest": "sha256:24f670d1e337828fb932901ca6194de50c22b1327ee9a684bc1318e7bdbfd1f7"
+  },
+  {
+    "instruction": "apko",
+    "size": 383783,
+    "digest": "sha256:0cace870ca6eb291c2bc62b108e672e6819855b6d57216a168feb0e4cf959585"
+  },
+  {
+    "instruction": "apko",
+    "size": 227383,
+    "digest": "sha256:ee59016fdcdf862268af47171ff7234b849a94bb35c724ab511f03912bebbf0d"
+  },
+  {
+    "instruction": "apko",
+    "size": 208423,
+    "digest": "sha256:5215e8ec94700a54bbbbbf967cb192ef56ab5ea8ba6abdf2fa2ca6b64fd09be6"
+  },
+  {
+    "instruction": "apko",
+    "size": 185171,
+    "digest": "sha256:2af97d351f066d95be4835564d4e9445047a023e1f572d129b8462635b998e05"
+  },
+  {
+    "instruction": "apko",
+    "size": 157835,
+    "digest": "sha256:54eab89300f9904267e4dec0048a2466671ec180be20959e153e41d6bb07134e"
+  },
+  {
+    "instruction": "apko",
+    "size": 23181,
+    "digest": "sha256:ade87bd01301e44a0844721749e7562e4b696e368bbf393e6911cfd4d4872641"
+  },
+  {
+    "instruction": "RUN /bin/sh -c apk add --no-cache nodejs-22 # buildkit",
+    "size": 135571915,
+    "digest": "sha256:92199bba1e5dcda090ca4f7782f6e5f212636fa10e0a1c21873ff9fa730e4add"
+  },
+  {
+    "instruction": "WORKDIR /app",
+    "size": 0,
+    "digest": "sha256:b5a8f947e77d95eb1df40b5c72db7a955e0951621650226052518fcfa5fae4af"
+  },
+  {
+    "instruction": "RUN /bin/sh -c apk add --no-cache ffmpeg libstdc++ &&     mkdir -p /app/data /app/data-home && chown -R nonroot:nonroot /app # buildkit",
+    "size": 171571449,
+    "digest": "sha256:14fbddc7a72b5a7762077cc8ce56bfd17b01e188989b5ead186c2ed979cd0b17"
+  },
+  {
+    "instruction": "COPY /app/public ./public # buildkit",
+    "size": 1199830,
+    "digest": "sha256:7a3e4a646dacdc6f7970afc8f673fe7e13eb44a74ab0ef597c780a97acef9cba"
+  },
+  {
+    "instruction": "COPY /app/.next/static ./.next/static # buildkit",
+    "size": 6885021,
+    "digest": "sha256:144dc4c465972c1ddaac76f154542be4c2eeb5e8bbc5a8f91ddb00cd83cbf6bf"
+  },
+  {
+    "instruction": "COPY /app/.next/standalone ./ # buildkit",
+    "size": 58762327,
+    "digest": "sha256:20c3bc1d378f3cd87759c6dedf4e00c96f4b96c3b2e59a5c60f8518092a88290"
+  },
+  {
+    "instruction": "COPY /app/open-sse ./open-sse # buildkit",
+    "size": 927166,
+    "digest": "sha256:8bccdba6bd529f2bddd9696b34845313244b290cfb8defe4a608fd9d45ef1481"
+  },
+  {
+    "instruction": "COPY /app/src/mitm ./src/mitm # buildkit",
+    "size": 91860,
+    "digest": "sha256:4c24f8a56a4a6e5b236b974383bcd4833eacf1205bbce86f858b8f393f21b606"
+  },
+  {
+    "instruction": "COPY /app/node_modules/node-forge ./node_modules/node-forge # buildkit",
+    "size": 1705684,
+    "digest": "sha256:7d1de93c9821999827f3036dc494f65d9b0448bfab3357a6b7648dc37ebfc1b7"
+  },
+  {
+    "instruction": "COPY /app/node_modules/next ./node_modules/next # buildkit",
+    "size": 192489756,
+    "digest": "sha256:3d698e3f73cae6783335be59e3e1011031aa5137ffb367a686a688ab38d7b5f0"
+  },
+  {
+    "instruction": "COPY /app/node_modules/sql.js ./node_modules/sql.js # buildkit",
+    "size": 31132473,
+    "digest": "sha256:e684c3ea51dc4caa87fe8e58279a423a0c0749dc88a309bd385b1b2271e89af2"
+  },
+  {
+    "instruction": "COPY /app/node_modules/node-machine-id ./node_modules/node-machine-id # buildkit",
+    "size": 35771,
+    "digest": "sha256:caa025f71f8fa254fa96d8f7166f2266e1d2cab158005b4172087243c2a0fa72"
+  },
+  {
+    "instruction": "COPY /opt/lazy-runtime/node_modules/. ./node_modules/ # buildkit",
+    "size": 23433437,
+    "digest": "sha256:9ba9ac2a2083c7fe92f277d335eb4fd693fa24304757871abe6b2956dd75a4ae"
+  }
+]

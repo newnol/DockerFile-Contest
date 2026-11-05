@@ -1,0 +1,14 @@
+direction: right
+vars: { d2-config: { sketch: false; theme-id: 0 } }
+classes: { node: { width: 260; height: 100; style: { fill: "#eeebe3"; stroke: "#c9c9bf"; font-color: "#69716b"; font-size: 26; border-radius: 12; stroke-width: 2 } } }
+a: "Compiler / headers" { class: node }
+a.style: { fill: "#e4ece3"; stroke: "#37775e"; font-color: "#252827"; stroke-width: 4 }
+b: "uv / pip + cache" { class: node }
+b.style: { fill: "#e4ece3"; stroke: "#37775e"; font-color: "#252827"; stroke-width: 4 }
+c: "Venv / wheels" { class: node }
+d: "Python + libs" { class: node }
+e: "Source + non-root" { class: node }
+a -> c: { style: { stroke: "#9b9f95"; stroke-width: 3 } }
+b -> c: { style: { stroke: "#9b9f95"; stroke-width: 3 } }
+c -> d: { style: { stroke: "#9b9f95"; stroke-width: 3 } }
+d -> e: { style: { stroke: "#9b9f95"; stroke-width: 3 } }

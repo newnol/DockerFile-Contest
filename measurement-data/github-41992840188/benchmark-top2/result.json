@@ -1,0 +1,33 @@
+{
+  "variant": "top2",
+  "commit": "35be0461710f3f907d1c6e1fd54de68d1f915ea8",
+  "platform": "linux/amd64",
+  "runner": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+  "cpu_count": 4,
+  "builds": {
+    "cold": {
+      "seconds": 22.579,
+      "exit_code": 0,
+      "cached_log_lines": 0
+    },
+    "warm": {
+      "seconds": 0.553,
+      "exit_code": 0,
+      "cached_log_lines": 12
+    },
+    "source-change": {
+      "seconds": 0.928,
+      "exit_code": 0,
+      "cached_log_lines": 8
+    }
+  },
+  "image_id": "sha256:8f37f45f10a82f3fc93bcd2fc1c4e0386c5a1e5c9579376930fdd9122b48352d",
+  "image_bytes": 68597503,
+  "layer_count": 12,
+  "configured_user": "app",
+  "base_images": [],
+  "runtime": "passed",
+  "last_probe_error": "[Errno 104] Connection reset by peer",
+  "startup_seconds": 2.849,
+  "stop_seconds": 0.361
+}

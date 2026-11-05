@@ -1,0 +1,99 @@
+{
+  "Id": "sha256:066649ad340740e1afed65f3a4849f383b69964e08a1f5f60f126487d8695f55",
+  "RepoTags": [
+    "contest-benchmark:top-entry3"
+  ],
+  "RepoDigests": [],
+  "Parent": "",
+  "Comment": "buildkit.dockerfile.v0",
+  "Created": "2026-11-05T08:14:46.678421287Z",
+  "DockerVersion": "",
+  "Author": "",
+  "Config": {
+    "Hostname": "",
+    "Domainname": "",
+    "User": "10001:10001",
+    "AttachStdin": false,
+    "AttachStdout": false,
+    "AttachStderr": false,
+    "ExposedPorts": {
+      "5000/tcp": {}
+    },
+    "Tty": false,
+    "OpenStdin": false,
+    "StdinOnce": false,
+    "Env": [
+      "PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "LANG=C.UTF-8",
+      "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+      "PYTHON_VERSION=3.13.18",
+      "PYTHON_SHA256=abb0102e6d4ae027509bcb82327d9dd85515b44a3ba8ad538cfc5e9847029f68",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "PYTHONUNBUFFERED=1",
+      "PYTHONOPTIMIZE=2",
+      "HOST=0.0.0.0",
+      "PORT=5000",
+      "WORKERS=1",
+      "APP_VERSION=0.1.0",
+      "GIT_COMMIT_SHA=sha"
+    ],
+    "Cmd": [
+      "python",
+      "-m",
+      "python_service_template.app"
+    ],
+    "Healthcheck": {
+      "Test": [
+        "CMD-SHELL",
+        "python -c \"import sys, http.client; c=http.client.HTTPConnection('127.0.0.1', int(__import__('os').environ.get('PORT','5000')), timeout=1); c.request('GET','/health'); r=c.getresponse(); sys.exit(0 if r.status==200 else 1)\" || exit 1"
+      ],
+      "Interval": 30000000000,
+      "Timeout": 2000000000,
+      "StartPeriod": 10000000000,
+      "Retries": 3
+    },
+    "ArgsEscaped": true,
+    "Image": "",
+    "Volumes": null,
+    "WorkingDir": "/home/appuser",
+    "Entrypoint": null,
+    "OnBuild": null,
+    "Labels": {
+      "org.opencontainers.image.created": "",
+      "org.opencontainers.image.description": "Dockerfile contest build",
+      "org.opencontainers.image.licenses": "Apache-2.0",
+      "org.opencontainers.image.revision": "sha",
+      "org.opencontainers.image.title": "python-service-template",
+      "org.opencontainers.image.version": "0.1.0"
+    }
+  },
+  "Architecture": "amd64",
+  "Os": "linux",
+  "Size": 217554218,
+  "GraphDriver": {
+    "Data": {
+      "LowerDir": "/var/lib/docker/overlay2/07d347179968d7a77dbc0b4cef8a4d6df0e013426623c1220de8ab6d20da6f00/diff:/var/lib/docker/overlay2/759f228360ecb17268ba9db092b39974f49ac25acd86d47874c2deea3d6df7a1/diff:/var/lib/docker/overlay2/f486c1652cb14e28cdc02a555dbd887c1936fce0298cf95cd751bfbb7d59acf9/diff:/var/lib/docker/overlay2/7b34074e328b84710a0d9a4a7e45da780cd381f01a94e320a96e155593225de4/diff:/var/lib/docker/overlay2/5c457044f3843d7d219c91ad783c89d89e007cb342fdd7f5ca5948e625708f00/diff:/var/lib/docker/overlay2/fe92e7974776792d62e3313ddf43b39eecaae509c8822d3d1bab0197c11cd658/diff:/var/lib/docker/overlay2/539e76093529f96c4b5bd92190e5b5258a6ab7b4c1e1d99f9bbf0c0a08f37a51/diff:/var/lib/docker/overlay2/d3d7cbdde8ef5dd0cf32076cff3c2405302cf9950d0de018765b1751b46ddb77/diff",
+      "MergedDir": "/var/lib/docker/overlay2/a271e1a726bdececc29c0786e4031e6580200f26f49c8f85eaa852dafc886c1d/merged",
+      "UpperDir": "/var/lib/docker/overlay2/a271e1a726bdececc29c0786e4031e6580200f26f49c8f85eaa852dafc886c1d/diff",
+      "WorkDir": "/var/lib/docker/overlay2/a271e1a726bdececc29c0786e4031e6580200f26f49c8f85eaa852dafc886c1d/work"
+    },
+    "Name": "overlay2"
+  },
+  "RootFS": {
+    "Type": "layers",
+    "Layers": [
+      "sha256:a5d6d345f6afa08d7c31272055746d60a838b290bfcc82c0a23e8e984d61a933",
+      "sha256:b9baa14e993c683240d519adebb39657df4d2b973dc2f3fee23cd51367806e2b",
+      "sha256:1217eb836a36d0c4be6a310113a777ecb9d7e9c24197a407665c8884cc5369a4",
+      "sha256:3929d22d8aa43d69f436bbc47ef472db875440b850dbc4e80dd272a3adf673d2",
+      "sha256:1955a501b78b5f2559ca17d425ad7b52f8c0f0e95969263c06a34a0bd52f0151",
+      "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "sha256:8fc9f040f030cfd532a1e4e11510c8ccb9a1d7daa6fe7fe1d6515e54ce60d62c",
+      "sha256:b02adb240fb716d872474d231ea25a928125ad9fb637c8eb70f77c3652bb1700",
+      "sha256:4a6a5f213b99e54825e1a7ae5d5f2dd13411da7c9f8c2309d040039dae69d135"
+    ]
+  },
+  "Metadata": {
+    "LastTagTime": "0001-01-01T00:00:00Z"
+  }
+}

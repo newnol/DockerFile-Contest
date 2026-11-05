@@ -1,0 +1,33 @@
+{
+  "variant": "top1",
+  "commit": "03f0cd1cfc5dcc634c4669cb1e08ed319b03c11c",
+  "platform": "linux/amd64",
+  "runner": "Linux-7.0.0-1014-aws-x86_64-with-glibc2.39",
+  "cpu_count": 4,
+  "builds": {
+    "cold": {
+      "seconds": 5.528,
+      "exit_code": 0,
+      "cached_log_lines": 0
+    },
+    "warm": {
+      "seconds": 0.29,
+      "exit_code": 0,
+      "cached_log_lines": 10
+    },
+    "source-change": {
+      "seconds": 0.375,
+      "exit_code": 0,
+      "cached_log_lines": 9
+    }
+  },
+  "image_id": "sha256:e34d34c4a822e615f7b895d447b699ad5877d7755d4f2b32c63f8d1ee10c386b",
+  "image_bytes": 106770664,
+  "layer_count": 21,
+  "configured_user": "65532",
+  "base_images": [],
+  "runtime": "passed",
+  "last_probe_error": "[Errno 104] Connection reset by peer",
+  "startup_seconds": 1.767,
+  "stop_seconds": 0.331
+}
