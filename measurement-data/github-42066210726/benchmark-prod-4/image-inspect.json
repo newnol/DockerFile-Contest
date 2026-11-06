@@ -1,0 +1,92 @@
+{
+  "Id": "sha256:213ce9913805bffd0d3a68f683186b1bd31c980fa332e63c8a8a2a070ed87a44",
+  "RepoTags": [
+    "contest-benchmark:prod"
+  ],
+  "RepoDigests": [],
+  "Parent": "",
+  "Comment": "buildkit.dockerfile.v0",
+  "Created": "2026-11-05T16:37:47.329213268Z",
+  "DockerVersion": "",
+  "Author": "",
+  "Config": {
+    "Hostname": "",
+    "Domainname": "",
+    "User": "10001:10001",
+    "AttachStdin": false,
+    "AttachStdout": false,
+    "AttachStderr": false,
+    "ExposedPorts": {
+      "5000/tcp": {}
+    },
+    "Tty": false,
+    "OpenStdin": false,
+    "StdinOnce": false,
+    "Env": [
+      "PATH=/opt/venv/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "LANG=C.UTF-8",
+      "GPG_KEY=7169605F62C751356D054A26A821E680E5FA6305",
+      "PYTHON_VERSION=3.13.18",
+      "PYTHON_SHA256=abb0102e6d4ae027509bcb82327d9dd85515b44a3ba8ad538cfc5e9847029f68",
+      "PYTHONUNBUFFERED=1",
+      "PYTHONDONTWRITEBYTECODE=1",
+      "PYTHONPATH=/app/src",
+      "HOST=0.0.0.0",
+      "PORT=5000",
+      "WORKERS=1"
+    ],
+    "Cmd": [
+      "python",
+      "src/python_service_template/app.py"
+    ],
+    "Healthcheck": {
+      "Test": [
+        "CMD-SHELL",
+        "python -c \"import urllib.request; urllib.request.urlopen('http://127.0.0.1:${PORT}/health/', timeout=2)\" || exit 1"
+      ],
+      "Interval": 15000000000,
+      "Timeout": 3000000000,
+      "StartPeriod": 10000000000,
+      "Retries": 3
+    },
+    "ArgsEscaped": true,
+    "Image": "",
+    "Volumes": null,
+    "WorkingDir": "/app",
+    "Entrypoint": null,
+    "OnBuild": null,
+    "Labels": {
+      "org.opencontainers.image.source": "https://github.com/newnol/DockerFile-Contest",
+      "org.opencontainers.image.title": "python-service-template"
+    },
+    "StopSignal": "SIGTERM"
+  },
+  "Architecture": "amd64",
+  "Os": "linux",
+  "Size": 71918765,
+  "GraphDriver": {
+    "Data": {
+      "LowerDir": "/var/lib/docker/overlay2/faca08bd416149757cdd50e7bb0cd72473af07412a24a9c8721d29c210e480a2/diff:/var/lib/docker/overlay2/05f3d9fc31b8666c39f52f64d2730a3cc1918739d291346e405922828574e88a/diff:/var/lib/docker/overlay2/7eb2b13fb678e51797b31db611085d9d5a87b42ab51cd0fd3299ac1276c78a91/diff:/var/lib/docker/overlay2/2c632c95f89a25ef1c1a52a46d83ffad75c049166d405a3e5285664b0775e262/diff:/var/lib/docker/overlay2/11c4c162b21cfd351887c99550b61892fd5d871eafbbbdc73811df3ba09edfd1/diff:/var/lib/docker/overlay2/ccc0a2c7b43b8858d14a559606c4f6ad5ed2c0a1bc149e684d514ad4d09c2c86/diff:/var/lib/docker/overlay2/e408e4a31615c9e40a502d69a44ef2cdb5c8b5d62323e6bdde85487588721054/diff",
+      "MergedDir": "/var/lib/docker/overlay2/0184cca392323a0b4907f4dae957d4d15ffd178669655bc00f1f2b502e8eb6c3/merged",
+      "UpperDir": "/var/lib/docker/overlay2/0184cca392323a0b4907f4dae957d4d15ffd178669655bc00f1f2b502e8eb6c3/diff",
+      "WorkDir": "/var/lib/docker/overlay2/0184cca392323a0b4907f4dae957d4d15ffd178669655bc00f1f2b502e8eb6c3/work"
+    },
+    "Name": "overlay2"
+  },
+  "RootFS": {
+    "Type": "layers",
+    "Layers": [
+      "sha256:75c137aedfb2760f88629236cb7b797630aed0c3d91d626d1d1bb694878fc2ba",
+      "sha256:322a3b93f345af149cd089c23cc33fcf221aa5dd4d2250165267b3dc9af90568",
+      "sha256:2addde02c3f4dd1c51aed79e3beeda5fd492bc4c9ffcfccf53c63bdaa1ed7364",
+      "sha256:9bbffd293cf732db4fac52a6e9ee5a5454bf6940099b3603dedcf9593a8a40dc",
+      "sha256:670400eb3f848bdd3a74b48a6081affb57723f51f932404614e90bbcad15ec05",
+      "sha256:aab1a76c7ae51179b4c28483eca09163c652cd05bc4eeac6cf2718af0cc98586",
+      "sha256:6faf252d7e602d6ece85195fa7edf6dfedb3a5c1fb483d7176d989b778cc0126",
+      "sha256:6d034ab6f8888b405450ac9793bcb6ab0a07ce0d85ca38d3af095044d92e56d3"
+    ]
+  },
+  "Metadata": {
+    "LastTagTime": "0001-01-01T00:00:00Z"
+  }
+}

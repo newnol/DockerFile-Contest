@@ -3,26 +3,26 @@
 Dán toàn bộ khối dưới đây vào công cụ, chọn **16:9** và **tiếng Việt**. Sau khi tạo xong, soát lại từng con số theo `measurement-data/github-42057474702/comparison/comparison.md`.
 
 ```text
-Tạo một bài thuyết trình kỹ thuật 26 slide, tỉ lệ 16:9, tiếng Việt, cho buổi chia sẻ nội bộ 25 phút với các anh kỹ sư senior.
+Tạo một bài thuyết trình kỹ thuật 31 slide, tỉ lệ 16:9, tiếng Việt, cho buổi chia sẻ nội bộ 25 phút với các anh kỹ sư senior.
 
 CHỦ ĐỀ: "Tối ưu Dockerfile: nhỏ hơn, nhanh hơn, vẫn phải chạy đúng" – case study Python/FastAPI từ Dockerfile Contest 2025.
 NGƯỜI TRÌNH BÀY: Ngô Tấn Tài (newnol). Xưng "em". Bài "TOP 2" là bài dự thi của chính người trình bày – ghi rõ "bài em".
 
 PHONG CÁCH:
 - Hiện đại, kỹ thuật, sạch. Nền sáng #F6F7F9 cho slide nội dung, nền navy #0B1F3A cho slide mở đầu, chuyển phần, kết luận.
-- Màu nhấn: xanh Docker #2496ED. Màu cố định cho 3 recipe, dùng nhất quán ở mọi biểu đồ: Mặc định #7C8BA1, TOP 1 #2E9E6B, TOP 2 (bài em) #F06A35.
+- Màu nhấn: xanh Docker #2496ED. Màu cố định cho 4 recipe, dùng nhất quán ở mọi biểu đồ: Mặc định #7C8BA1, TOP 1 #2E9E6B, TOP 2 (bài em) #F06A35, Production #2496ED.
 - Font sans-serif hỗ trợ tiếng Việt (Be Vietnam Pro, Inter hoặc Segoe UI). Code dùng font monospace trên khung terminal tối.
 - Mỗi slide tối đa 1 ý chính, ít chữ, ưu tiên sơ đồ, biểu đồ, icon. Dùng logo Docker, Python, Alpine Linux, Debian, Trivy, Renovate, GitHub Actions.
 - Hiệu ứng: chuyển slide fade; các thẻ/cột xuất hiện lần lượt theo click.
 
 QUY TẮC BẮT BUỘC VỀ SỐ LIỆU:
 - KHÔNG làm tròn, KHÔNG suy diễn, KHÔNG thêm số nào ngoài danh sách dưới đây.
-- Biểu đồ phải vẽ đúng các giá trị đã cho. Mọi slide kết quả ghi chú nguồn: "Run 42057474702 · median 5 runner".
+- Biểu đồ phải vẽ đúng các giá trị đã cho. Slide 17–21 ghi nguồn "Run 42057474702 · median 5 runner"; slide 28 ghi "Run 42066210726 · 4 recipe × 5 runner".
 - Không viết "0 CVE", "an toàn tuyệt đối", "nhanh nhất" nếu số liệu không nói vậy.
 
 DÀN Ý TỪNG SLIDE:
 1. Tiêu đề (nền navy): "Tối ưu Dockerfile" · phụ đề "Nhỏ hơn · Nhanh hơn · Vẫn phải chạy đúng" · tên người trình bày · logo Docker + Python.
-2. Lộ trình 25 phút, 5 thẻ: 01 Từ CTF (3′) · 02 Cơ chế (11′) · 03 Đo lường (2′) · 04 Kết quả (5′) · 05 Bài học (4′).
+2. Lộ trình 25 phút, 6 thẻ: 01 Từ CTF (3′) · 02 Cơ chế (9′) · 03 Đo lường (2′) · 04 Kết quả (5′) · 05 Bài học (2′) · 06 Production (4′).
 3. "Từ CTF: image không chỉ chứa app" – khung terminal (docker run -it … sh; id → root; ls -a → .env .git; which curl wget gcc) + 3 thẻ rủi ro: File thừa · Tool có sẵn · Quyền dư.
 4. "Cùng một source, ba cách đóng gói" – 3 thẻ:
    Mặc định (docker-example.txt): uv:python3.13-alpine, COPY . . rồi uv sync, 1 stage, chạy root.
@@ -55,8 +55,39 @@ DÀN Ý TỪNG SLIDE:
 22. Timeline "'0 CVE' là ảnh chụp của một ngày": 11/2025 nộp bài, 0 CVE → digest Alpine 3.22.2 không đổi → 11/2026 quét lại 117 phát hiện, 112 ở OS. Bài học: pin digest + Renovate/CI rebuild + scan trên pipeline.
 23. "Container lên ≠ request chạy đúng" – terminal: curl → 500 Internal Server Error; AttributeError: '_IncludedRouter' object has no attribute 'path'. 3 thẻ: Nguyên nhân (fastapi>=0.116.0 không cận trên → kéo 0.162) · Sửa (pin fastapi==0.120.4 → 15/15 PASS) · Bài học (lock + test request).
 24. "Đọc đúng số trước khi kết luận" – 3 thẻ: 5 mẫu/recipe, 3 lượt chạy · so nguyên recipe, không tách từng kỹ thuật · chưa đo live API, tải, thời gian pull.
-25. Kết luận (navy): "Nhỏ hơn là một số đo. Tối ưu là một kết luận có điều kiện." – 3 số lớn: −67% kích thước · 20× build lại nhanh hơn · 112 CVE ở base cũ.
-26. "Cảm ơn các anh · Q&A" – github.com/newnol/DockerFile-Contest.
+25. Chuyển phần (navy): "06 · Bản production" – phụ đề "Gộp những gì số liệu đã chứng minh · bỏ những gì không có tác dụng".
+26. Bảng "Lấy gì từ đâu" (3 cột: Kỹ thuật · Lấy từ · Vì sao):
+    Multi-stage, compiler ở builder · TOP 1, TOP 2 · runtime không có gcc/cargo
+    Lock trước, source sau · TOP 1 · sửa code 0.48 s vs 9.50 s
+    Runtime Alpine + strip .so trong builder · TOP 2 bài em · nhỏ nhất 65.5 MiB
+    Lock có hash, chỉ dùng wheel · mới · tái lập, không cần compiler
+    Cache mount uv dùng được thật · sửa bài em · bỏ PIP_NO_CACHE_DIR / --no-cache-dir
+    Code & thư viện thuộc root, chạy user 10001 · sửa bài em · app không tự sửa được code
+    Không xóa stdlib sau COPY · bài học slide 7 · không giảm size, dễ gãy import
+    Digest + lock mới, Renovate cập nhật · bài học slide 22–23 · CVE cũ và lỗi FastAPI
+    Ghi chú: đổi dependency nằm ngoài luật cuộc thi – đây là khuyến nghị production.
+27. "Dockerfile production (rút gọn)" – khung code tối:
+    FROM python:3.13-alpine@sha256:7984… AS builder
+    COPY --from=ghcr.io/astral-sh/uv:0.13.7@… /uv /usr/local/bin/
+    RUN apk add --no-cache binutils && uv venv /opt/venv
+    COPY requirements.txt /tmp/            # lock có hash
+    RUN --mount=type=cache,target=/root/.cache/uv \
+        uv pip install --require-hashes --no-build -r /tmp/requirements.txt \
+     && find /opt/venv -name '*.so' -exec strip --strip-unneeded {} +
+    FROM python:3.13-alpine@sha256:7984… AS runtime
+    RUN adduser -u 10001 -S -H app …
+    COPY --from=builder /opt/venv /opt/venv  # của root
+    COPY src/ ./src/                         # sau cùng
+    USER 10001:10001
+    HEALTHCHECK CMD python -c "urlopen(/health/)"
+    CMD ["python", "src/python_service_template/app.py"]
+    Bên cạnh là 4 thẻ: Tái lập (digest + hash) · Không compiler (--no-build) · Cache đúng (lock đổi mới cài lại) · Ít quyền (non-root, code read-only).
+28. "Production đứng ở đâu so với 3 recipe" – biểu đồ cột ngang kích thước (MiB): Mặc định 200.6 · TOP 1 101.8 · TOP 2 bài em 65.5 · Production 68.6.
+    Bảng median cùng run: Cold build – 11.9 / 9.3 / 22.5 / 10.2 s; Sửa source – 9.50 / 0.44 / 0.93 / 0.57 s; RAM rỗi – 55 / 55 / 48 / 47 MiB; Critical/High – 2/17 · 3/19 · 2/27 · 0/5.
+    Hộp ghi chú: "Trivy production: 0 ở dependency của app · 0 ở gói OS · 8 còn lại là pip có sẵn trong image python chính thức". Chân slide: "CVE thấp chủ yếu nhờ base & lock mới, không riêng kỹ thuật Dockerfile".
+29. "Dockerfile tốt vẫn chưa đủ" – checklist 6 ô: ✓ Pin digest + lock có hash · ✓ Renovate mở PR khi có bản mới · ✓ Build, smoke test, Trivy trên CI · ○ Chặn merge khi có CVE HIGH mới · ○ SBOM (syft) + ký image (cosign) · ○ Read-only rootfs, drop caps, giới hạn CPU/RAM. (✓ đã có, ○ đề xuất.)
+30. Kết luận (navy): "Nhỏ hơn là một số đo. Tối ưu là một kết luận có điều kiện." – 3 số lớn: −67% kích thước · 20× build lại nhanh hơn · 112 CVE ở base cũ.
+31. "Cảm ơn các anh · Q&A" – github.com/newnol/DockerFile-Contest.
 
 Thêm speaker notes ngắn (2–4 câu, giọng nói tự nhiên, xưng "em") cho từng slide, dựa đúng vào nội dung trên.
 ```
@@ -64,4 +95,4 @@ Thêm speaker notes ngắn (2–4 câu, giọng nói tự nhiên, xưng "em") ch
 ## Sau khi tạo
 
 - Chèn ảnh từ `presentation/pptx/assets/`: `ci-run.png` (slide 14), `app-home.png` (slide 15), các file logo `logo-*.png`.
-- Đối chiếu biểu đồ slide 17–21 với `comparison.md`. Các công cụ AI hay tự làm tròn số hoặc đổi thứ tự cột.
+- Đối chiếu biểu đồ slide 17–21 với `measurement-data/github-42057474702/comparison/comparison.md` và slide 28 với `measurement-data/github-42066210726/comparison/comparison.md`. Các công cụ AI hay tự làm tròn số hoặc đổi thứ tự cột.

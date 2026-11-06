@@ -21,16 +21,18 @@ ASSETS = Path(__file__).resolve().parent / 'assets'
 OUT = ROOT / 'presentation' / 'Dockerfile-Optimize.pptx'
 RUNS = ['42057474702', '42058703830', '42059152289']
 MAIN = RUNS[0]
+PROD_RUN = '42066210726'  # 4-recipe run that includes the production recipe
 
 DATA = {r: json.loads((ROOT / f'measurement-data/github-{r}/comparison/comparison.json').read_text())['aggregate']
         for r in RUNS}
 A = DATA[MAIN]
 V = ['default', 'top1', 'top2']
-NAME = {'default': 'Mặc định', 'top1': 'TOP 1', 'top2': 'TOP 2 · bài em'}
+V4 = V + ['prod']
+NAME = {'default': 'Mặc định', 'top1': 'TOP 1', 'top2': 'TOP 2 · bài em', 'prod': 'Production'}
 
 NAVY, INK, MUTED, BG, CARD, LINE = '0B1F3A', '1B2430', '5B6675', 'F6F7F9', 'FFFFFF', 'E3E7ED'
 BLUE, RED, GREEN, AMBER = '2496ED', 'D64545', '2E9E6B', 'E3A008'
-COLOR = {'default': '7C8BA1', 'top1': '2E9E6B', 'top2': 'F06A35'}
+COLOR = {'default': '7C8BA1', 'top1': '2E9E6B', 'top2': 'F06A35', 'prod': '2496ED'}
 FONT, MONO = 'Segoe UI', 'Consolas'
 
 
@@ -38,9 +40,10 @@ def rgb(h):
     return RGBColor.from_string(h)
 
 
-def layer_split(variant):
+def layer_split(variant, run=None):
     """Split Trivy findings into OS-package vs Python-package counts."""
-    report = json.loads((ROOT / f'measurement-data/github-{MAIN}/benchmark-{variant}-1/trivy.json').read_text())
+    run = run or MAIN
+    report = json.loads((ROOT / f'measurement-data/github-{run}/benchmark-{variant}-1/trivy.json').read_text())
     os_n = py_n = 0
     for target in report.get('Results') or []:
         n = len(target.get('Vulnerabilities') or [])
@@ -48,7 +51,8 @@ def layer_split(variant):
             os_n += n
         else:
             py_n += n
-    total = sum(A[variant]['cves'].values())
+    total = sum(json.loads((ROOT / f'measurement-data/github-{run}/comparison/comparison.json').read_text())
+                ['aggregate'][variant]['cves'].values())
     assert os_n + py_n == total, (variant, os_n, py_n, total)
     return os_n, py_n
 
@@ -175,7 +179,8 @@ def arrow(s, x1, y1, x2, y2, color=MUTED, width=2.25):
 def header(s, tag, title, n):
     text(s, 0.6, 0.38, 9, 0.35, tag.upper(), size=13, color=BLUE, bold=True)
     text(s, 0.6, 0.68, 12.1, 0.9, title, size=32, bold=True)
-    text(s, 12.0, 0.38, 0.75, 0.35, f'{n:02d}', size=13, color=MUTED, align=PP_ALIGN.RIGHT)
+    # Number from the slide's position so inserted slides never leave stale numbers.
+    text(s, 12.0, 0.38, 0.75, 0.35, f'{len(prs.slides):02d}', size=13, color=MUTED, align=PP_ALIGN.RIGHT)
 
 
 def footer(s, note):
@@ -341,26 +346,27 @@ slides.append(s)
 
 # 2 Agenda
 s = new_slide()
-header(s, 'Lộ trình · 25 phút', 'Hôm nay em kể theo 5 chặng', 2)
+header(s, 'Lộ trình · 25 phút', 'Hôm nay em kể theo 6 chặng', 2)
 items = [('01', 'Từ CTF', 'Vì sao em soi bên trong image', '3′', BLUE),
-         ('02', 'Cơ chế', 'Layer · cache · multi-stage · base', '11′', '6366F1'),
+         ('02', 'Cơ chế', 'Layer · cache · multi-stage · base', '9′', '6366F1'),
          ('03', 'Đo lường', '3 recipe × 5 runner trên CI', '2′', GREEN),
          ('04', 'Kết quả', 'Size · build · runtime · CVE', '5′', COLOR['top2']),
-         ('05', 'Bài học', 'Đọc đúng số, chọn có điều kiện', '4′', AMBER)]
+         ('05', 'Bài học', 'Đọc đúng số', '2′', AMBER),
+         ('06', 'Production', 'Gộp lợi thế thành một bản', '4′', COLOR['prod'])]
 grp = []
 for i, (num, t, sub, mins, col) in enumerate(items):
-    x = 0.6 + i * 2.48
+    x = 0.6 + i * 2.06
     g = s.shapes.add_group_shape()
-    box(g, x, 2.0, 2.3, 3.9, CARD, LINE)
-    box(g, x, 2.0, 2.3, 0.12, col, shape=MSO_SHAPE.RECTANGLE)
-    text(g, x + 0.25, 2.35, 1.8, 0.9, num, size=44, bold=True, color=col)
-    text(g, x + 0.25, 3.35, 1.9, 0.5, t, size=22, bold=True)
-    text(g, x + 0.25, 3.95, 1.9, 1.2, sub, size=15, color=MUTED, spacing=1.2)
-    text(g, x + 0.25, 5.2, 1.9, 0.5, mins, size=20, bold=True, color=col)
+    box(g, x, 2.0, 1.92, 3.9, CARD, LINE)
+    box(g, x, 2.0, 1.92, 0.12, col, shape=MSO_SHAPE.RECTANGLE)
+    text(g, x + 0.2, 2.35, 1.6, 0.9, num, size=40, bold=True, color=col)
+    text(g, x + 0.2, 3.35, 1.65, 0.5, t, size=18, bold=True)
+    text(g, x + 0.2, 3.95, 1.6, 1.2, sub, size=14, color=MUTED, spacing=1.2)
+    text(g, x + 0.2, 5.2, 1.6, 0.5, mins, size=20, bold=True, color=col)
     grp.append(g)
 builds(s, grp)
 notes(s, '''
-Bài nói gồm 5 phần: câu chuyện CTF khiến em quan tâm tới nội dung image; các cơ chế layer và cache; cách em thiết kế phép đo; kết quả; và những bài học, kể cả những chỗ bài của em làm chưa tốt.''')
+Bài nói gồm 6 phần: câu chuyện CTF; các cơ chế layer và cache; cách em đo; kết quả; bài học, kể cả những chỗ bài em làm chưa tốt; và cuối cùng là một bản Dockerfile production gộp các điểm mạnh lại.''')
 slides.append(s)
 
 # 3 CTF
@@ -798,6 +804,126 @@ footer(s, 'Toàn bộ log, inspect, packages, trivy.json: measurement-data/githu
 notes(s, '''
 Trước khi kết luận, em muốn nói rõ giới hạn. Mỗi recipe có 5 mẫu, chạy 3 lượt; vẫn có nhiễu. Em so nguyên cả recipe nên không nói được riêng kỹ thuật nào đóng góp bao nhiêu. Và em chưa đo API thật, tải, hay thời gian pull thực tế.
 Mọi log và dữ liệu thô đều nằm trong repo để các anh kiểm tra lại.''')
+slides.append(s)
+
+
+# ---------------------------------------------------------------- production recipe
+P = json.loads((ROOT / f'measurement-data/github-{PROD_RUN}/comparison/comparison.json').read_text())['aggregate']
+psplit = {v: layer_split(v, PROD_RUN) for v in V4}
+
+
+def base_vs_app(variant, run):
+    """Split findings into packages the app installed (per packages.json) vs everything inherited from the base."""
+    d = ROOT / f'measurement-data/github-{run}/benchmark-{variant}-1'
+    norm = lambda n: n.lower().replace('_', '-')
+    installed = {norm(name) for name, _ in json.loads((d / 'packages.json').read_text())}
+    report = json.loads((d / 'trivy.json').read_text())
+    vulns = [v for r in report.get('Results') or [] if r.get('Class') == 'lang-pkgs' for v in r.get('Vulnerabilities') or []]
+    in_app = sum(norm(v['PkgName']) in installed for v in vulns)
+    return len(vulns) - in_app, in_app
+
+
+prod_base, prod_app = base_vs_app('prod', PROD_RUN)
+
+s = divider(0, '06', 'Bản production', 'Gộp những gì số liệu đã chứng minh · bỏ những gì không có tác dụng')
+notes(s, 'Phần cuối: nếu đưa lên production thật, em sẽ viết Dockerfile thế nào – lấy điểm mạnh đã đo được của từng recipe và sửa các lỗi em vừa kể.')
+slides.append(s)
+
+s = new_slide()
+header(s, '06 · Production', 'Lấy gì từ đâu', 0)
+rows = [['Kỹ thuật', 'Lấy từ', 'Vì sao (bằng chứng)'],
+        ['Multi-stage, compiler ở builder', 'TOP 1 · TOP 2', 'runtime không có gcc/cargo'],
+        ['Lock trước, source sau', 'TOP 1', f"sửa code: {A['top1']['source_change_s']['median'] + 1e-9:.2f} s vs {A['default']['source_change_s']['median']:.2f} s"],
+        ['Runtime Alpine + strip .so trong builder', 'TOP 2 · bài em', f"nhỏ nhất: {A['top2']['image_mib']['median']:.1f} MiB"],
+        ['Lock có hash · chỉ dùng wheel', 'Mới', 'tái lập được · không cần compiler'],
+        ['Cache mount uv dùng được thật', 'Sửa bài em', 'bỏ PIP_NO_CACHE_DIR / --no-cache-dir'],
+        ['Code & thư viện thuộc root, chạy user 10001', 'Sửa bài em', 'app không tự sửa được code'],
+        ['Không xóa stdlib sau COPY', 'Bài học slide 7', 'không giảm size, dễ gãy import'],
+        ['Digest + lock mới, Renovate cập nhật', 'Bài học slide 22, 23', 'CVE cũ và lỗi FastAPI']]
+tb = table(s, 0.6, 1.7, 12.13, 4.9, rows, col_w=[4.9, 2.3, 4.93], size=15)
+footer(s, 'Thay đổi dependency (lock mới) nằm ngoài luật cuộc thi · đây là khuyến nghị cho production, không phải bài dự thi')
+notes(s, f"""
+Em gộp lại theo bằng chứng. Multi-stage để compiler ở lại builder. Thứ tự lock trước, source sau của TOP 1, vì nó cho {A['top1']['source_change_s']['median'] + 1e-9:.2f} giây khi sửa code. Runtime Alpine và strip file .so trong builder của bài em vì nhỏ nhất.
+Thêm hai thứ mới: lock có hash và chỉ cài wheel dựng sẵn – không cần compiler nên build lạnh nhanh hơn – và cache mount hoạt động thật.
+Đồng thời sửa các lỗi của bài em: code thuộc root, không xóa stdlib sau khi COPY, và cập nhật base, dependency. Lưu ý: đổi dependency là ngoài luật cuộc thi, nên đây là khuyến nghị production.""")
+slides.append(s)
+
+s = new_slide()
+header(s, '06 · Production', 'Dockerfile production (rút gọn)', 0)
+cd_ = code(s, 0.6, 1.65, 8.0, 5.15, [
+    ('FROM python:3.13-alpine@sha256:7984… AS builder', 'E5E7EB'),
+    ('COPY --from=ghcr.io/astral-sh/uv:0.13.7@… /uv /usr/local/bin/', 'E5E7EB'),
+    ('RUN uv venv /opt/venv', 'E5E7EB'),
+    ('COPY requirements.txt /tmp/        # lock có hash', '86EFAC'),
+    ('RUN --mount=type=cache,target=/root/.cache/uv \\', '93C5FD'),
+    ('    uv pip install --require-hashes --no-build \\', '93C5FD'),
+    ('        -r /tmp/requirements.txt \\', '93C5FD'),
+    ("  && find /opt/venv -name '*.so' -exec strip …", '93C5FD'),
+    '',
+    ('FROM python:3.13-alpine@sha256:7984… AS runtime', 'E5E7EB'),
+    ('RUN adduser -u 10001 -S -H app …', 'E5E7EB'),
+    ('COPY --from=builder /opt/venv /opt/venv  # của root', 'FBBF24'),
+    ('COPY src/ ./src/                         # sau cùng', '86EFAC'),
+    ('USER 10001:10001', 'E5E7EB'),
+    ('HEALTHCHECK CMD python -c "urlopen(/health/)"', 'E5E7EB'),
+    ('CMD ["python", "src/python_service_template/app.py"]', 'E5E7EB')], 14)
+tags = [('Tái lập', 'digest + hash cho mọi file', GREEN), ('Không compiler', '--no-build: chỉ wheel musllinux', BLUE),
+        ('Cache đúng', 'lock đổi mới cài lại', '6366F1'), ('Ít quyền', 'non-root, code read-only', AMBER)]
+grp = [card(s, 8.9, 1.65 + i * 1.3, 3.83, 1.18, t, b, c, 17, 13) for i, (t, b, c) in enumerate(tags)]
+builds(s, [cd_] + grp)
+footer(s, 'Bản đầy đủ: benchmarks/dockerfiles/prod.Dockerfile · lock: benchmarks/prod/requirements.txt')
+notes(s, """
+Đây là bản rút gọn. Stage builder dùng đúng digest Python Alpine mới nhất, lấy uv từ image chính thức đã pin, tạo venv, rồi cài từ lock có hash với --no-build: chỉ chấp nhận wheel dựng sẵn, nên không cần build-base hay cargo. Ngay trong lệnh đó em strip các file .so – dọn cùng bước nên thực sự giảm size.
+Stage runtime tạo user 10001, chép venv và source với chủ sở hữu là root, source chép sau cùng để sửa code không làm mất cache. Healthcheck dùng chính Python, không cần cài thêm wget.""")
+slides.append(s)
+
+s = new_slide()
+header(s, '06 · Production', 'Production đứng ở đâu so với 3 recipe', 0)
+psz = {v: P[v]['image_mib']['median'] for v in V4}
+ch = bar_chart(s, 0.6, 1.7, 5.6, 4.9, [NAME[v] for v in V4], [('MiB', [psz[v] for v in V4], INK)],
+               point_colors=[COLOR[v] for v in V4], point_labels=[f"{psz[v]:.1f} MiB" for v in V4], gap=40)
+text(s, 0.6, 6.45, 5.6, 0.4, 'Kích thước image chưa nén (median)', size=13, color=MUTED)
+rows = [['Median', 'Cold', 'Sửa source', 'RAM', 'C / H']]
+for v in V4:
+    rows.append([NAME[v], f"{P[v]['cold_s']['median']:.1f} s", f"{P[v]['source_change_s']['median']:.2f} s",
+                 f"{P[v]['idle_mem_mib']['median']:.0f} MiB", f"{P[v]['cves']['CRITICAL']} / {P[v]['cves']['HIGH']}"])
+tb = table(s, 6.5, 1.8, 6.23, 3.0, rows, col_w=[1.85, 1.05, 1.28, 1.05, 1.0], size=14)
+pc = P['prod']
+msg = box(s, 6.5, 5.05, 6.23, 1.55, 'EAF4FE', BLUE)
+label_in(msg, [[('Trivy production: ', {'bold': True}),
+                (f"{prod_app} ở dependency app · {psplit['prod'][0]} ở gói OS", {})],
+               [(f"{prod_base} còn lại: pip có sẵn trong image python chính thức", {'size': 13, 'color': MUTED})]], 16, INK)
+builds(s, [ch, tb, msg])
+footer(s, f'Run {PROD_RUN} · 4 recipe × 5 runner · CVE thấp chủ yếu nhờ base & lock mới, không riêng kỹ thuật Dockerfile')
+notes(s, f"""
+Em đo bản production cùng lúc với ba recipe kia trong một run mới, cũng 5 runner mỗi bản.
+Kích thước {psz['prod']:.1f} MiB, so với {psz['top2']:.1f} của bài em và {psz['top1']:.1f} của TOP 1. Cold build {pc['cold_s']['median']:.1f} giây, sửa source {pc['source_change_s']['median']:.2f} giây, RAM khi rỗi {pc['idle_mem_mib']['median']:.0f} MiB.
+Trivy: không có phát hiện nào ở dependency của app hay ở gói OS; {prod_base} phát hiện còn lại nằm trong pip mà image python chính thức mang sẵn. Em phải nói rõ: số thấp chủ yếu vì base và lock mới hôm nay; vài tháng nữa nó cũng sẽ tăng nếu không có Renovate.""")
+slides.append(s)
+
+s = new_slide()
+header(s, '06 · Production', 'Dockerfile tốt vẫn chưa đủ', 0)
+cl = [('✓', 'Pin digest + lock có hash', 'trong prod.Dockerfile', GREEN),
+      ('✓', 'Renovate mở PR khi có bản mới', 'đã bật trong repo (PR #1–#3)', GREEN),
+      ('✓', 'Build, smoke test, Trivy trên CI', 'workflow benchmark', GREEN),
+      ('○', 'Chặn merge khi có CVE HIGH mới', 'nên thêm vào CI', AMBER),
+      ('○', 'SBOM (syft) + ký image (cosign)', 'nên thêm', AMBER),
+      ('○', 'Read-only rootfs · drop caps', 'cùng giới hạn CPU/RAM lúc deploy', AMBER)]
+grp = []
+for i, (mark, t, sub, col) in enumerate(cl):
+    x, y = 0.6 + (i % 2) * 6.15, 1.75 + (i // 2) * 1.6
+    g = s.shapes.add_group_shape()
+    box(g, x, y, 5.95, 1.4, CARD, LINE)
+    dot = box(g, x + 0.25, y + 0.38, 0.65, 0.65, col, shape=MSO_SHAPE.OVAL)
+    label_in(dot, mark, 20, 'FFFFFF', True)
+    text(g, x + 1.15, y + 0.25, 4.6, 0.5, t, size=17, bold=True)
+    text(g, x + 1.15, y + 0.8, 4.6, 0.4, sub, size=13, color=MUTED)
+    grp.append(g)
+builds(s, grp)
+footer(s, '✓ đã có trong repo · ○ chưa làm, đề xuất cho bước tiếp theo')
+notes(s, """
+Dockerfile tốt mới là một nửa. Phần còn lại là quy trình: pin và lock thì đã có; Renovate đã bật; CI đã build, smoke test và quét Trivy.
+Những thứ em chưa làm và đề xuất: chặn merge khi xuất hiện CVE HIGH hoặc CRITICAL mới, tạo SBOM và ký image, và lúc deploy thì chạy read-only filesystem, bỏ capabilities, giới hạn CPU và RAM.""")
 slides.append(s)
 
 # 25 Conclusion

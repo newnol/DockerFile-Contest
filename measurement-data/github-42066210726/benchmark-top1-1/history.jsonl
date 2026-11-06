@@ -1,0 +1,29 @@
+{"Comment":"buildkit.dockerfile.v0","CreatedAt":"2026-11-05T16:37:18Z","CreatedBy":"ENTRYPOINT [\"python\" \"src/python_service_template/app.py\"]","CreatedSince":"Less than a second ago","ID":"sha256:740e9022a31346d3381df23298f2a6d67cbb7023cc0dedb13334512ff3246fbd","Size":"0B"}
+{"Comment":"buildkit.dockerfile.v0","CreatedAt":"2026-11-05T16:37:18Z","CreatedBy":"EXPOSE [8080/tcp]","CreatedSince":"Less than a second ago","ID":"\u003cmissing\u003e","Size":"0B"}
+{"Comment":"buildkit.dockerfile.v0","CreatedAt":"2026-11-05T16:37:18Z","CreatedBy":"ENV PATH=/app/.venv/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin PYTHONPATH=/app/src/ LANG=C.UTF-8 PYTHONUNBUFFERED=1 PYTHONFAULTHANDLER=1 PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=random HOST=0.0.0.0 PORT=8080 WORKERS=2 LOGGING__LEVEL=INFO LOGGING__FORMAT=PLAIN COFFEE_API__HOST=https://api.sampleapis.com/coffee/ APP_VERSION=0.1.0 GIT_COMMIT_SHA=sha LD_LIBRARY_PATH=/lib/multi-arch","CreatedSince":"Less than a second ago","ID":"\u003cmissing\u003e","Size":"0B"}
+{"Comment":"buildkit.dockerfile.v0","CreatedAt":"2026-11-05T16:37:18Z","CreatedBy":"COPY --chown=nonroot:nonroot src/ ./src/ # buildkit","CreatedSince":"Less than a second ago","ID":"\u003cmissing\u003e","Size":"27.2kB"}
+{"Comment":"buildkit.dockerfile.v0","CreatedAt":"2026-11-05T16:37:14Z","CreatedBy":"COPY --chown=nonroot:nonroot /build/.venv/ /app/.venv/ # buildkit","CreatedSince":"4 seconds ago","ID":"\u003cmissing\u003e","Size":"52.9MB"}
+{"Comment":"buildkit.dockerfile.v0","CreatedAt":"2026-11-05T16:37:13Z","CreatedBy":"COPY /usr/local/bin/python /usr/local/bin/python3 # buildkit","CreatedSince":"5 seconds ago","ID":"\u003cmissing\u003e","Size":"14.5kB"}
+{"Comment":"buildkit.dockerfile.v0","CreatedAt":"2026-11-05T16:37:13Z","CreatedBy":"COPY /usr/local/lib/python3.13/ /usr/local/lib/python3.13/ # buildkit","CreatedSince":"5 seconds ago","ID":"\u003cmissing\u003e","Size":"24.7MB"}
+{"Comment":"buildkit.dockerfile.v0","CreatedAt":"2026-11-05T16:37:13Z","CreatedBy":"COPY /usr/local/lib/libpython3.13.so.1.0 /usr/local/lib/libpython3.13.so.1.0 # buildkit","CreatedSince":"5 seconds ago","ID":"\u003cmissing\u003e","Size":"5.23MB"}
+{"Comment":"buildkit.dockerfile.v0","CreatedAt":"2026-11-05T16:37:13Z","CreatedBy":"COPY /lib/multi-arch/ /lib/multi-arch/ # buildkit","CreatedSince":"5 seconds ago","ID":"\u003cmissing\u003e","Size":"3.08MB"}
+{"Comment":"buildkit.dockerfile.v0","CreatedAt":"2026-11-05T16:37:07Z","CreatedBy":"WORKDIR /app","CreatedSince":"11 seconds ago","ID":"\u003cmissing\u003e","Size":"0B"}
+{"Comment":"buildkit.dockerfile.v0","CreatedAt":"2026-11-05T16:37:07Z","CreatedBy":"LABEL image.description=Secure, minimal Python app using UV and Distroless","CreatedSince":"11 seconds ago","ID":"\u003cmissing\u003e","Size":"0B"}
+{"Comment":"buildkit.dockerfile.v0","CreatedAt":"2026-11-05T16:37:07Z","CreatedBy":"LABEL maintainer.youtube=DevOps Mentor","CreatedSince":"11 seconds ago","ID":"\u003cmissing\u003e","Size":"0B"}
+{"Comment":"buildkit.dockerfile.v0","CreatedAt":"2026-11-05T16:37:07Z","CreatedBy":"LABEL maintainer.company=VIETNAM NATIONAL CYBER SECURITY TECHNOLOGY CORPORATION","CreatedSince":"11 seconds ago","ID":"\u003cmissing\u003e","Size":"0B"}
+{"Comment":"buildkit.dockerfile.v0","CreatedAt":"2026-11-05T16:37:07Z","CreatedBy":"LABEL maintainer.email=thanhnt.devops@gmail.com","CreatedSince":"11 seconds ago","ID":"\u003cmissing\u003e","Size":"0B"}
+{"Comment":"buildkit.dockerfile.v0","CreatedAt":"2026-11-05T16:37:07Z","CreatedBy":"LABEL maintainer=Thanh Nguyen The","CreatedSince":"11 seconds ago","ID":"\u003cmissing\u003e","Size":"0B"}
+{"Comment":"","CreatedAt":"0001-01-01T00:00:00Z","CreatedBy":"","CreatedSince":"N/A","ID":"\u003cmissing\u003e","Size":"5.9MB"}
+{"Comment":"","CreatedAt":"0001-01-01T00:00:00Z","CreatedBy":"","CreatedSince":"N/A","ID":"\u003cmissing\u003e","Size":"12.8MB"}
+{"Comment":"","CreatedAt":"0001-01-01T00:00:00Z","CreatedBy":"","CreatedSince":"N/A","ID":"\u003cmissing\u003e","Size":"236kB"}
+{"Comment":"","CreatedAt":"0001-01-01T00:00:00Z","CreatedBy":"","CreatedSince":"N/A","ID":"\u003cmissing\u003e","Size":"346B"}
+{"Comment":"","CreatedAt":"0001-01-01T00:00:00Z","CreatedBy":"","CreatedSince":"N/A","ID":"\u003cmissing\u003e","Size":"497B"}
+{"Comment":"","CreatedAt":"0001-01-01T00:00:00Z","CreatedBy":"","CreatedSince":"N/A","ID":"\u003cmissing\u003e","Size":"0B"}
+{"Comment":"","CreatedAt":"0001-01-01T00:00:00Z","CreatedBy":"","CreatedSince":"N/A","ID":"\u003cmissing\u003e","Size":"64B"}
+{"Comment":"","CreatedAt":"0001-01-01T00:00:00Z","CreatedBy":"","CreatedSince":"N/A","ID":"\u003cmissing\u003e","Size":"0B"}
+{"Comment":"","CreatedAt":"0001-01-01T00:00:00Z","CreatedBy":"","CreatedSince":"N/A","ID":"\u003cmissing\u003e","Size":"149B"}
+{"Comment":"","CreatedAt":"0001-01-01T00:00:00Z","CreatedBy":"","CreatedSince":"N/A","ID":"\u003cmissing\u003e","Size":"0B"}
+{"Comment":"","CreatedAt":"0001-01-01T00:00:00Z","CreatedBy":"","CreatedSince":"N/A","ID":"\u003cmissing\u003e","Size":"82.1kB"}
+{"Comment":"","CreatedAt":"0001-01-01T00:00:00Z","CreatedBy":"","CreatedSince":"N/A","ID":"\u003cmissing\u003e","Size":"1.46MB"}
+{"Comment":"","CreatedAt":"0001-01-01T00:00:00Z","CreatedBy":"","CreatedSince":"N/A","ID":"\u003cmissing\u003e","Size":"22.9kB"}
+{"Comment":"","CreatedAt":"0001-01-01T00:00:00Z","CreatedBy":"","CreatedSince":"N/A","ID":"\u003cmissing\u003e","Size":"271kB"}
