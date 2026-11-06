@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1.7
+# syntax=docker/dockerfile:1.7@sha256:a57df69d0ea827fb7266491f2813635de6f17269be881f696fbfdf2d83dda33e
 
 # =============================================================================
 # DOCKERFILE ULTRA OPTIMIZED + SECURITY PATCHED
@@ -8,7 +8,7 @@
 # -----------------------------------------------------------------------------
 # Stage 1: Dependencies Builder
 # -----------------------------------------------------------------------------
-    FROM python:3.13-alpine AS deps
+    FROM python:3.13-alpine@sha256:1e1f6334529d1fb26a2ef619d7cffb30a7c7d7cc1cc7338ebee283a58d1aeaca AS deps
 
     ENV PIP_NO_CACHE_DIR=1 \
         PIP_DISABLE_PIP_VERSION_CHECK=1 \
@@ -54,7 +54,7 @@
     # -----------------------------------------------------------------------------
     # Stage 2: Runtime (ULTRA MINIMAL + SECURE)
     # -----------------------------------------------------------------------------
-    FROM python:3.13-alpine AS runtime
+    FROM python:3.13-alpine@sha256:1e1f6334529d1fb26a2ef619d7cffb30a7c7d7cc1cc7338ebee283a58d1aeaca AS runtime
     
     LABEL org.opencontainers.image.title="Python Service Template" \
           org.opencontainers.image.description="Production-ready FastAPI service - Optimized & Secured" \
